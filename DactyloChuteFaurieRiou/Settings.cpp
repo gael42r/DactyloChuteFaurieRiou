@@ -68,6 +68,7 @@ bool Settings::edit()
 
 		cout << "----------------------------------------------------------" << endl;
 
+		system("CLS");
 		this->display();
 		return true;
 	}

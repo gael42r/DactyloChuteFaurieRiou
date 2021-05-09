@@ -32,6 +32,7 @@ int Menu::enterChoice()
 
 void Menu::setUp()
 {
+	system("CLS");
 	settings_.display();
 	while (settings_.edit());
 }
@@ -52,5 +53,8 @@ void Menu::editScoreboard(Scoreboard& scoreboard)
 }
 
 void Menu::goToScoreboard() {
+	system("CLS");
 	scoreboard_.display();
+	cout << "> ";
+	system("PAUSE");
 }

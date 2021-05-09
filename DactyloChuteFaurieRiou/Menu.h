@@ -11,13 +11,13 @@ private:
 
 public:
 	//Menu();
-	Menu(Settings, Scoreboard&);
-	void Title();
-	void display();
-	int enterChoice();
+	Menu(Settings &, Scoreboard &);
+	void Title() const;
+	void display() const;
+	int enterChoice() const;
 	void play();
 	void setUp();
-	void goToScoreboard();
-	void editScoreboard(Scoreboard&);
+	void goToScoreboard() const;
+	void editScoreboard(Scoreboard &);
 	//void exit();
 };

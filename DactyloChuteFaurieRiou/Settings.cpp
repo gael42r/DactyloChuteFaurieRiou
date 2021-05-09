@@ -11,7 +11,7 @@ Settings::Settings(int speed, int dictionary, int mode)
 	mode_ = mode;
 }
 
-void Settings::display()
+void Settings::display() const
 {
 	cout << "-----------------------------------* SETTINGS *-----------------------------------" << endl;
 	cout << "- Speed (1 to 5) : " << speed_ << endl;

@@ -13,6 +13,6 @@ private:
 	list<Score> scoreboard_;
 public:
 	Scoreboard();
-	void display();
+	void display() const;
 	void addScore(Score);
 };

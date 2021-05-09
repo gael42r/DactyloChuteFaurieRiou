@@ -26,7 +26,7 @@ Score::Score(string player, int numberOfWords, int speed, int dictionary, int mo
 	date_ = string(date_string);
 }
 
-void Score::display()
+void Score::display() const
 {
 	cout << setw(11) << player_ << " | " << setw(16) << numberOfWords_ << " | " << setw(6) << speed_ << " | " << setw(11) << dictionary_ << " | " << setw(5) << mode_ << " | " << setw(17) << date_ << endl;
 }

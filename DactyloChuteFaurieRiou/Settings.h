@@ -9,6 +9,6 @@ private:
 
 public:
 	Settings(int = 3, int = 3, int = 1);
-	void display();
+	void display() const;
 	bool edit();
 };

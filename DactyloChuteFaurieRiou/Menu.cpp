@@ -4,13 +4,13 @@
 
 using namespace std;
 
-Menu::Menu(Settings settings, Scoreboard& scoreboard)
+Menu::Menu(Settings & settings, Scoreboard & scoreboard)
 {
 	settings_ = settings;
 	scoreboard_ = scoreboard;
 }
 
-void Menu::Title()
+void Menu::Title() const
 {
 	cout << "    ###                       ##               ###                                ###                 ##" << endl;
 	cout << "     ##                       ##                ##                                 ##                 ##" << endl;
@@ -22,7 +22,7 @@ void Menu::Title()
 	cout << "                                     #####" << endl;
 }
 
-int Menu::enterChoice()
+int Menu::enterChoice() const
 {
 	int choice;
 	cout << "> ";
@@ -37,7 +37,7 @@ void Menu::setUp()
 	while (settings_.edit());
 }
 
-void Menu::display()
+void Menu::display() const
 {
 	cout << "-------------------------------------* MENU *-------------------------------------" << endl;
 	cout << "- 1 : Play" << endl;
@@ -47,14 +47,15 @@ void Menu::display()
 	cout << "----------------------------------------------------------------------------------" << endl;
 }
 
-void Menu::editScoreboard(Scoreboard& scoreboard)
+void Menu::goToScoreboard() const
 {
-	scoreboard_ = scoreboard;
-}
-
-void Menu::goToScoreboard() {
 	system("CLS");
 	scoreboard_.display();
 	cout << "> ";
 	system("PAUSE");
+}
+
+void Menu::editScoreboard(Scoreboard& scoreboard)
+{
+	scoreboard_ = scoreboard;
 }

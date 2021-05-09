@@ -17,6 +17,6 @@ private:
 
 public:
 	Score(string, int, int, int, int);
-	void display();
-	int getNumberOfWords();
+	void display() const;
+	int getNumberOfWords() const;
 };

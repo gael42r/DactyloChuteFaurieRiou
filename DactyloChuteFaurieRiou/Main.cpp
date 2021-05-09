@@ -1,25 +1,63 @@
-#include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "Menu.h"
+#include "Settings.h"
+#include "Scoreboard.h"
+#include "Score.h"
+
+using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!");
-    sf::CircleShape shape(200.f);
-    shape.setFillColor(sf::Color::Red);
+	Settings settings;
+	Scoreboard scoreboard;
+	Menu menu(settings, scoreboard);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+	Score score1("Gael", 1, 1, 1, 1);
+	Score score2("Antoine", 2, 1, 3, 1);
+	scoreboard.addScore(score1);
+	scoreboard.addScore(score2);
+	menu.editScoreboard(scoreboard);
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+	menu.Title();
 
-    return 0;
-    //Test
+	for (;;)
+	{
+		menu.display();
+
+		int choice = 0;
+		while (choice < 1 || choice > 4)
+		{
+			choice = menu.enterChoice();
+		}
+
+		switch (choice)
+		{
+		case 1: //Play
+			break;
+		case 2: //Settings
+			menu.setUp();
+			break;
+		case 3: //Scoreboard
+			menu.goToScoreboard();
+			break;
+		case 4: //Exit
+			return 0;
+			break;
+		default:
+			break;
+			return 0;
+		}
+	}
+
+
+	//Score score1("Gael", 1, 1, 1, 1);
+	//Score score2("Antoine", 2, 1, 3, 1);
+	//scoreboard.addScore(score1);
+	//scoreboard.addScore(score2);
+	//scoreboard.display();
+	////menu.editScoreboard(scoreboard);
+
+	system("PAUSE");
+	return 0;
 }

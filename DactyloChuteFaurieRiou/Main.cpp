@@ -56,6 +56,12 @@ void test()
 			if (event.type == sf::Event::Closed)
 				window.close();
 
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			{
+				// la touche "flèche gauche" est enfoncée : on bouge le personnage
+				text.move(sf::Vector2f(0,5));
+			}
+
 		}
 
 		// On efface la fenêtre (en blanc)

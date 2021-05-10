@@ -55,7 +55,7 @@ void Menu::goToScoreboard() const
 	system("PAUSE");
 }
 
-void Menu::editScoreboard(Scoreboard& scoreboard)
+void Menu::editScoreboard(Scoreboard & scoreboard)
 {
 	scoreboard_ = scoreboard;
 }

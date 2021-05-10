@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 #include "Menu.h"
 #include "Settings.h"
@@ -6,6 +7,44 @@
 #include "Score.h"
 
 using namespace std;
+
+
+void test()
+{
+	sf::Texture texture;
+	if (!texture.loadFromFile(".\\Resources\\test.png"))
+	{
+		// erreur...
+	}
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
+	// Création de la fenêtre
+	sf::Vector2u sz = texture.getSize();
+	sf::RenderWindow window(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
+
+	// Boucle principale
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			// Demande de fermeture de la fenêtre
+			if (event.type == sf::Event::Closed)
+				window.close();
+
+		}
+
+		// On efface la fenêtre (en blanc)
+		window.clear(sf::Color::White);
+
+		// Affichage du sprite
+		window.draw(sprite);
+
+		// Mise à jour de la fenêtre
+		window.display();
+	}
+}
+
 
 int main()
 {
@@ -34,6 +73,7 @@ int main()
 		switch (choice)
 		{
 		case 1: //Play
+			test();
 			break;
 		case 2: //Settings
 			menu.setUp();

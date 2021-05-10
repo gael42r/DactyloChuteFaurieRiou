@@ -30,6 +30,10 @@ int Menu::enterChoice() const
 	return choice;
 }
 
+void Menu::play()
+{
+}
+
 void Menu::setUp()
 {
 	system("CLS");

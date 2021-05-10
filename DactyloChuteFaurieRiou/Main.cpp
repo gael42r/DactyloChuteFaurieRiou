@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//test
+//Test
 
 void test()
 {

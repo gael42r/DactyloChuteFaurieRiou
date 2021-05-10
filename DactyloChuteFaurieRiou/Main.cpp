@@ -8,8 +8,7 @@
 
 using namespace std;
 
-//Test
-
+// caca
 void test()
 {
 	sf::Texture texture;

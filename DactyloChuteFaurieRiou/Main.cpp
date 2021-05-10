@@ -10,6 +10,31 @@ using namespace std;
 
 void test()
 {
+	sf::Font font;
+	if (!font.loadFromFile(".\\Resources\\arial.ttf"))
+	{
+		// erreur...
+	}
+
+	sf::Text text;
+
+	// choix de la police à utiliser
+	text.setFont(font); // font est un sf::Font
+
+	// choix de la chaîne de caractères à afficher
+	text.setString("Hello world");
+
+	// choix de la taille des caractères
+	text.setCharacterSize(24); // exprimée en pixels, pas en points !
+
+	// choix de la couleur du texte
+	text.setFillColor(sf::Color::Red);
+
+	// choix du style du texte
+	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
+
+
 	sf::Texture texture;
 	if (!texture.loadFromFile(".\\Resources\\test.png"))
 	{
@@ -38,6 +63,8 @@ void test()
 
 		// Affichage du sprite
 		window.draw(sprite);
+
+		window.draw(text);
 
 		// Mise à jour de la fenêtre
 		window.display();

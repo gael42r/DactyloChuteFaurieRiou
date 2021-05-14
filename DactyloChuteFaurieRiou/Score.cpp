@@ -6,13 +6,11 @@
 
 using namespace std;
 
-Score::Score(string player, int numberOfWords, int speed, int dictionary, int mode)
+Score::Score(string player, string difficulty, int numberOfWords)
 {
 	player_ = player;
 	numberOfWords_ = numberOfWords;
-	speed_ = speed;
-	dictionary_ = dictionary;
-	mode_ = mode;
+	difficulty_ = difficulty;
 
 	//Current date
 	time_t date = time(NULL);
@@ -28,5 +26,5 @@ Score::Score(string player, int numberOfWords, int speed, int dictionary, int mo
 
 void Score::display() const
 {
-	cout << setw(11) << player_ << " | " << setw(16) << numberOfWords_ << " | " << setw(6) << speed_ << " | " << setw(11) << dictionary_ << " | " << setw(5) << mode_ << " | " << setw(17) << date_ << endl;
+	cout << setw(11) << player_ << " | " << setw(16) << numberOfWords_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
 }

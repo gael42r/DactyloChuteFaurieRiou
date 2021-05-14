@@ -80,17 +80,11 @@ void test()
 
 int main()
 {
-	Settings settings;
-	Scoreboard scoreboard;
-	Menu menu(settings, scoreboard);
+	Menu menu;
+	menu.editScoreboard(new Score("Gael", menu.getSettings().getStrDifficulty(), 25));
 
-	Score score1("Gael", 1, 1, 1, 1);
-	Score score2("Antoine", 2, 1, 3, 1);
-	scoreboard.addScore(score1);
-	scoreboard.addScore(score2);
-	menu.editScoreboard(scoreboard);
 
-	menu.Title();
+	menu.title();
 
 	for (;;)
 	{

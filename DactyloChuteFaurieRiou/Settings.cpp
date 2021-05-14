@@ -4,19 +4,38 @@
 
 using namespace std;
 
-Settings::Settings(int speed, int dictionary, int mode)
+Settings::Settings(int difficulty)
 {
-	speed_ = speed;
-	dictionary_ = dictionary;
-	mode_ = mode;
+	difficulty_ = difficulty;
+	switch (difficulty)
+	{
+	case 1: //Easy
+		strDifficulty_ = "Easy";
+		speed_ = 1;
+		wordsDifficulty_ = 1;
+		break;
+	case 2: //Normal
+		strDifficulty_ = "Normal";
+		speed_ = 2;
+		wordsDifficulty_ = 2;
+		break;
+	case 3: //Hard
+		strDifficulty_ = "Hard";
+		speed_ = 3;
+		wordsDifficulty_ = 3;
+		break;
+	default:
+		strDifficulty_ = "Easy";
+		speed_ = 1;
+		wordsDifficulty_ = 1;
+		break;
+	}
 }
 
 void Settings::display() const
 {
 	cout << "-----------------------------------* SETTINGS *-----------------------------------" << endl;
-	cout << "- Speed (1 to 5) : " << speed_ << endl;
-	cout << "- Words difficulty (1 to 5) : " << dictionary_ << endl;
-	cout << "- Mode (1:Infinite | 2:Timer | 3:List) : " << mode_ << endl;
+	cout << "- Difficulty : " << strDifficulty_ << endl;
 	cout << "----------------------------------------------------------------------------------" << endl;
 }
 
@@ -25,7 +44,7 @@ bool Settings::edit()
 	char reply = '\0';
 	while (reply != 'y' && reply != 'n')
 	{
-		cout << "> Do you want to change the settings? (y:YES | n:NO) : ";
+		cout << "> Do you want to change the difficulty? (y:YES | n:NO) : ";
 		cin >> reply;
 	}
 
@@ -33,37 +52,38 @@ bool Settings::edit()
 	{
 		cout << "-------------------* SETTINGS EDITION *-------------------" << endl;
 
-		int speed = 0;
-		while (speed < 1 || speed > 5)
+		int difficulty = 0;
+		while (difficulty < 1 || difficulty > 3)
 		{
-			cout << "- Speed (1 to 5) : ";
-			cin >> speed;
+			cout << "- Difficulty (1 to 3) : ";
+			cin >> difficulty;
 		}
-		if (speed >= 1 && speed <= 5)
+		if (difficulty >= 1 && difficulty <= 3)
 		{
-			speed_ = speed;
-		}
-
-		int dictionary = 0;
-		while (dictionary < 1 || dictionary > 5)
-		{
-			cout << "- Words difficulty (1 to 5) : ";
-			cin >> dictionary;
-		}
-		if (dictionary >= 1 && dictionary <= 5)
-		{
-			dictionary_ = dictionary;
-		}
-
-		int mode = 0;
-		while (mode < 1 || mode > 3)
-		{
-			cout << "- Mode (1:Infinite | 2:Timer | 3:List) : ";
-			cin >> mode;
-		}
-		if (mode >= 1 && mode <= 3)
-		{
-			mode_ = mode;
+			difficulty_ = difficulty;
+			switch (difficulty)
+			{
+			case 1: //Easy
+				strDifficulty_ = "Easy";
+				speed_ = 1;
+				wordsDifficulty_ = 1;
+				break;
+			case 2: //Normal
+				strDifficulty_ = "Normal";
+				speed_ = 2;
+				wordsDifficulty_ = 2;
+				break;
+			case 3: //Hard
+				strDifficulty_ = "Hard";
+				speed_ = 3;
+				wordsDifficulty_ = 3;
+				break;
+			default:
+				strDifficulty_ = "Easy";
+				speed_ = 1;
+				wordsDifficulty_ = 1;
+				break;
+			}
 		}
 
 		cout << "----------------------------------------------------------" << endl;

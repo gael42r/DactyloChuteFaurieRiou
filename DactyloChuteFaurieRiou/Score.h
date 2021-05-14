@@ -10,13 +10,11 @@ class Score
 private:
 	string player_;
 	int numberOfWords_;
-	int speed_;
-	int dictionary_;
-	int mode_;
+	string difficulty_;
 	string date_;
 
 public:
-	Score(string, int, int, int, int);
+	Score(string, string, int);
 	void display() const;
 	int getNumberOfWords() const;
 };

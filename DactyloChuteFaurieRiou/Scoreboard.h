@@ -10,9 +10,9 @@ using namespace std;
 class Scoreboard
 {
 private:
-	list<Score> scoreboard_;
+	list<Score*> scoreboard_;
 public:
 	Scoreboard();
 	void display() const;
-	void addScore(Score);
+	void addScore(Score*);
 };

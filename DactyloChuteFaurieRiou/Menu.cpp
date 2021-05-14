@@ -18,6 +18,8 @@ void Menu::title() const
 	cout << " ##  ##   ##  ##   ##  ##     ## ##   #####     ##     ##  ##            ##  ##    ##  ##  ##  ##     ## ##  ##" << endl;
 	cout << "  ######   #####    ####       ###       ##    ####     ####              ####    ###  ##   ######     ###    #####" << endl;
 	cout << "                                     #####" << endl;
+	system("PAUSE");
+	system("CLS");
 }
 
 int Menu::enterChoice() const

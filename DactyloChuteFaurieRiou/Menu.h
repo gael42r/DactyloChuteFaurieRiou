@@ -9,7 +9,7 @@ class Menu
 private:
 	Settings settings_;
 	Scoreboard scoreboard_;
-	Game* game;
+	Game* game_;
 
 public:
 	Menu();

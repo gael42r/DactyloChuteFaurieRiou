@@ -7,7 +7,15 @@ using namespace std;
 
 Scoreboard::Scoreboard()
 {
+}
 
+Scoreboard::~Scoreboard()
+{
+	list<Score*>::iterator it;
+	for (it = scoreboard_.begin(); it != scoreboard_.end(); it++)
+	{
+		delete *it;
+	}
 }
 
 void Scoreboard::display() const

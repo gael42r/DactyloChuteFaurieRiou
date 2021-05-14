@@ -37,6 +37,8 @@ void Menu::editScoreboard(Score* score)
 
 void Menu::play()
 {
+	game_ = new Game(settings_);
+	game_->openWindow();
 }
 
 void Menu::setUp()

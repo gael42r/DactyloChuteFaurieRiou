@@ -31,7 +31,7 @@ void test()
 	text.setFillColor(sf::Color::Red);
 
 	// choix du style du texte
-	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	text.setStyle(sf::Text::Italic | sf::Text::Underlined);
 
 
 
@@ -59,7 +59,25 @@ void test()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			{
 				// la touche "flèche gauche" est enfoncée : on bouge le personnage
-				text.move(sf::Vector2f(0,5));
+				text.move(sf::Vector2f(0, 5));
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			{
+				// la touche "flèche gauche" est enfoncée : on bouge le personnage
+				text.move(sf::Vector2f(0, -5));
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			{
+				// la touche "flèche gauche" est enfoncée : on bouge le personnage
+				text.move(sf::Vector2f(-5, 0));
+			}
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			{
+				// la touche "flèche gauche" est enfoncée : on bouge le personnage
+				text.move(sf::Vector2f(5, 0));
 			}
 
 		}
@@ -81,7 +99,8 @@ void test()
 int main()
 {
 	Menu menu;
-	menu.editScoreboard(new Score("Gael", menu.getSettings().getStrDifficulty(), 25));
+	menu.editScoreboard(new Score("Gael", menu.getSettings().getStrDifficulty(), 250));
+	menu.editScoreboard(new Score("Antoine", menu.getSettings().getStrDifficulty(), 120));
 
 
 	menu.title();
@@ -99,7 +118,7 @@ int main()
 		switch (choice)
 		{
 		case 1: //Play
-			test();
+			menu.play();
 			break;
 		case 2: //Settings
 			menu.setUp();

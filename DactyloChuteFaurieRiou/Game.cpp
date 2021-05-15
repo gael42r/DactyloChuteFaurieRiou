@@ -4,7 +4,19 @@ Game::Game(Settings settings)
 {
 	//Copy of settings
 	settings_ = settings;
-	dictionary_ = Dictionary(settings_.getDifficulty());
+	dictionary_ = Dictionary(settings.getDifficulty());
+}
+
+void Game::drawWords()
+{
+	/*list<Word*>::iterator it;
+	for (it = dictionary_.getListOfWords().begin(); it != dictionary_.getListOfWords().end(); it++)
+	{
+		(*it)->draw(renderWindow_);
+	}*/
+	/*list<Word*>::iterator it;
+	it = dictionary_.getListOfWords().begin();
+	(*it)->draw(renderWindow_);*/
 }
 
 void Game::Window()

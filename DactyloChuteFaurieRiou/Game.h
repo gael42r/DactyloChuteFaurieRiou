@@ -17,5 +17,6 @@ public:
 	Game(Settings);
 
 	Dictionary getDictionary() const { return dictionary_; }
+	void drawWords();
 	void Window();
 };

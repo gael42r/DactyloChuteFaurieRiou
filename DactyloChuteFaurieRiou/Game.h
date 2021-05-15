@@ -13,5 +13,5 @@ private:
 	Score score_;
 public:
 	Game(Settings);
-	void openWindow();
+	void Window();
 };

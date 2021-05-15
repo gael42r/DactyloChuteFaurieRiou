@@ -1,5 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include <SFML/Graphics.hpp>
+//#include <xstring>
 
 #include "Menu.h"
 #include "Settings.h"
@@ -10,89 +12,111 @@ using namespace std;
 
 void test()
 {
-	sf::Font font;
-	if (!font.loadFromFile(".\\Resources\\arial.ttf"))
+	//sf::Font font;
+	//if (!font.loadFromFile(".\\Resources\\arial.ttf"))
+	//{
+	//	// erreur...
+	//}
+
+	//sf::Text text;
+
+	//// choix de la police à utiliser
+	//text.setFont(font); // font est un sf::Font
+
+	//// choix de la chaîne de caractères à afficher
+	//text.setString("Hello world");
+
+	//// choix de la taille des caractères
+	//text.setCharacterSize(24); // exprimée en pixels, pas en points !
+
+	//// choix de la couleur du texte
+	//text.setFillColor(sf::Color::Red);
+
+	//// choix du style du texte
+	//text.setStyle(sf::Text::Italic | sf::Text::Underlined);
+
+
+
+	//sf::Texture texture;
+	//if (!texture.loadFromFile(".\\Resources\\test.png"))
+	//{
+	//	// erreur...
+	//}
+	//sf::Sprite sprite;
+	//sprite.setTexture(texture);
+
+	//// Création de la fenêtre
+	//sf::Vector2u sz = texture.getSize();
+	//sf::RenderWindow window(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
+
+	//// Boucle principale
+	//while (window.isOpen())
+	//{
+	//	sf::Event event;
+	//	while (window.pollEvent(event)) {
+	//		// Demande de fermeture de la fenêtre
+	//		if (event.type == sf::Event::Closed)
+	//			window.close();
+
+	//		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	//		{
+	//			// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	//			text.move(sf::Vector2f(0, 5));
+	//		}
+
+	//		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	//		{
+	//			// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	//			text.move(sf::Vector2f(0, -5));
+	//		}
+
+	//		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	//		{
+	//			// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	//			text.move(sf::Vector2f(-5, 0));
+	//		}
+
+	//		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	//		{
+	//			// la touche "flèche gauche" est enfoncée : on bouge le personnage
+	//			text.move(sf::Vector2f(5, 0));
+	//		}
+
+	//	}
+
+	//	// On efface la fenêtre (en blanc)
+	//	window.clear(sf::Color::White);
+
+	//	// Affichage du sprite
+	//	window.draw(sprite);
+
+	//	window.draw(text);
+
+	//	// Mise à jour de la fenêtre
+	//	window.display();
+	//}
+
+	list<string> strList;
+	ifstream flux(".\\Resources\\words.txt");
+
+	while (!flux.eof())
 	{
-		// erreur...
-	}
-
-	sf::Text text;
-
-	// choix de la police à utiliser
-	text.setFont(font); // font est un sf::Font
-
-	// choix de la chaîne de caractères à afficher
-	text.setString("Hello world");
-
-	// choix de la taille des caractères
-	text.setCharacterSize(24); // exprimée en pixels, pas en points !
-
-	// choix de la couleur du texte
-	text.setFillColor(sf::Color::Red);
-
-	// choix du style du texte
-	text.setStyle(sf::Text::Italic | sf::Text::Underlined);
-
-
-
-	sf::Texture texture;
-	if (!texture.loadFromFile(".\\Resources\\test.png"))
-	{
-		// erreur...
-	}
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
-
-	// Création de la fenêtre
-	sf::Vector2u sz = texture.getSize();
-	sf::RenderWindow window(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
-
-	// Boucle principale
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			// Demande de fermeture de la fenêtre
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			{
-				// la touche "flèche gauche" est enfoncée : on bouge le personnage
-				text.move(sf::Vector2f(0, 5));
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			{
-				// la touche "flèche gauche" est enfoncée : on bouge le personnage
-				text.move(sf::Vector2f(0, -5));
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			{
-				// la touche "flèche gauche" est enfoncée : on bouge le personnage
-				text.move(sf::Vector2f(-5, 0));
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			{
-				// la touche "flèche gauche" est enfoncée : on bouge le personnage
-				text.move(sf::Vector2f(5, 0));
-			}
-
+		string str;
+		getline(flux, str);
+		if (str.length() == 4 || str.length() == 5)
+		{
+			strList.push_back(str);
 		}
-
-		// On efface la fenêtre (en blanc)
-		window.clear(sf::Color::White);
-
-		// Affichage du sprite
-		window.draw(sprite);
-
-		window.draw(text);
-
-		// Mise à jour de la fenêtre
-		window.display();
+		
 	}
+	
+	list<string>::iterator it;
+	for (it = strList.begin(); it != strList.end(); it++) 
+	{
+		cout << *it << endl;
+	}
+	flux.close();
+	system("PAUSE");
 }
 
 
@@ -118,6 +142,7 @@ int main()
 		switch (choice)
 		{
 		case 1: //Play
+			//test();
 			menu.play();
 			break;
 		case 2: //Settings

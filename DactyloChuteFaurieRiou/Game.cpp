@@ -4,6 +4,7 @@ Game::Game(Settings settings)
 {
 	//Copy of settings
 	settings_ = settings;
+	dictionary_ = Dictionary(settings_.getDifficulty());
 }
 
 void Game::Window()

@@ -39,6 +39,7 @@ void Menu::play()
 {
 	game_ = new Game(settings_);
 	game_->Window();
+	game_->getDictionary().display();
 }
 
 void Menu::setUp()

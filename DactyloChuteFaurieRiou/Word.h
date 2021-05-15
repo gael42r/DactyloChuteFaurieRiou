@@ -14,5 +14,8 @@ private:
 	int state_;
 public:
 	Word(string);
+
+	string getContent() { return content_; }
+
 	void editState(int);
 };

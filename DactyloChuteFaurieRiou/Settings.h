@@ -17,6 +17,7 @@ public:
 	Settings(int = 1);
 
 	string getStrDifficulty() const { return strDifficulty_; }
+	int getDifficulty() const { return difficulty_; }
 
 	void display() const;
 	bool edit();

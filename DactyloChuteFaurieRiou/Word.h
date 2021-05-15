@@ -10,14 +10,14 @@ class Word
 {
 private:
 	string content_;
-	sf::Vector2i position_;
 	sf::Text text_;
 	int state_;
 public:
 	Word(string);
 
 	string getContent() const { return content_; }
+	sf::Text getText() const { return text_; }
 
-	void draw(sf::RenderWindow&);
+	void drawWord(sf::RenderWindow&);
 	void editState(int);
 };

@@ -7,26 +7,25 @@ using namespace std;
 Word::Word(string content)
 {
 	content_ = content;
+	state_ = 0;
+	text_.setPosition(rand() % 1000, rand() % 1000);
+}
 
-	text_.setString(content);
+void Word::drawWord(sf::RenderWindow& renderWindow)
+{
+	text_.setString(content_);
 	sf::Font font;
 	if (!font.loadFromFile(".\\Resources\\arial.ttf"))
 	{
 		cout << "Error : Font loading failed." << endl;
 	}
-	text_.setPosition(100,100);
+	
 	text_.setFont(font);
 	text_.setCharacterSize(24);
 	text_.setFillColor(sf::Color::Red);
 	text_.setStyle(sf::Text::Bold);
-
-	position_ = sf::Vector2i(rand() % 1080, 0);
-	state_ = 0;
-}
-
-void Word::draw(sf::RenderWindow& renderWindow)
-{
 	renderWindow.draw(text_);
+	renderWindow.display();
 }
 
 void Word::editState(int state)

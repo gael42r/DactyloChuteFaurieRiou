@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <SFML/Graphics.hpp>
-//#include <xstring>
+#include <xstring>
 
 #include "Menu.h"
 #include "Settings.h"
@@ -96,7 +96,7 @@ void test()
 	//	window.display();
 	//}
 
-	list<string> strList;
+	/*list<string> strList;
 	ifstream flux(".\\Resources\\words.txt");
 
 	while (!flux.eof())
@@ -116,12 +116,70 @@ void test()
 		cout << *it << endl;
 	}
 	flux.close();
-	system("PAUSE");
+	system("PAUSE");*/
 }
 
+void GameWindow(sf::RenderWindow& renderWindow, Game& game)
+{
+	sf::Font font;
+	if (!font.loadFromFile(".\\Resources\\arial.ttf"))
+	{
+		// erreur...
+	}
+
+	sf::Text text;
+
+	// choix de la police à utiliser
+	text.setFont(font); // font est un sf::Font
+
+	// choix de la chaîne de caractères à afficher
+	text.setString("Hello world");
+
+	// choix de la taille des caractères
+	text.setCharacterSize(24); // exprimée en pixels, pas en points !
+
+	// choix de la couleur du texte
+	text.setFillColor(sf::Color::Red);
+
+	// choix du style du texte
+	text.setStyle(sf::Text::Italic | sf::Text::Underlined);
+
+	text.setPosition(50, 50);
+
+	sf::Texture texture;
+	if (!texture.loadFromFile(".\\Resources\\test.png"))
+	{
+		cout << "err";
+	}
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
+	sf::Vector2u sz = texture.getSize();
+	renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
+
+	while (renderWindow.isOpen())
+	{
+		sf::Event event;
+		while (renderWindow.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				renderWindow.close();
+		}
+		game.getDictionary().drawDictionary(renderWindow);
+		renderWindow.clear(sf::Color::White);
+		renderWindow.draw(sprite);
+		renderWindow.draw(text);
+		renderWindow.display();
+		
+
+	}
+}
 
 int main()
 {
+	sf::RenderWindow renderWindow;
+
+
 	Menu menu;
 	menu.editScoreboard(new Score("Gael", menu.getSettings().getStrDifficulty(), 250));
 	menu.editScoreboard(new Score("Antoine", menu.getSettings().getStrDifficulty(), 120));
@@ -131,6 +189,8 @@ int main()
 
 	for (;;)
 	{
+		Game game(menu.getSettings());
+
 		menu.display();
 
 		int choice = 0;
@@ -143,7 +203,7 @@ int main()
 		{
 		case 1: //Play
 			//test();
-			menu.play();
+			GameWindow(renderWindow, game);
 			break;
 		case 2: //Settings
 			menu.setUp();

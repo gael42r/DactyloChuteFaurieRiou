@@ -8,10 +8,11 @@
 class Dictionary
 {
 private:
-	list<Word*> word_;
+	vector<Word*> word_;
 public:
 	Dictionary(int = 1);
 
-	list<Word*> getListOfWords() { return word_; }
+	void drawDictionary(sf::RenderWindow&);
+	vector<Word*> getListOfWords() { return word_; }
 	void display() const;
 };

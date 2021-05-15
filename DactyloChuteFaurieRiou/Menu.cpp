@@ -37,10 +37,7 @@ void Menu::editScoreboard(Score* score)
 
 void Menu::play()
 {
-	game_ = new Game(settings_);
-	game_->Window();
-	game_->getDictionary().display();
-	game_->drawWords();
+
 }
 
 void Menu::setUp()

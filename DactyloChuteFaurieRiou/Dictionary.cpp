@@ -7,7 +7,7 @@ using namespace std;
 
 Dictionary::Dictionary(int difficulty)
 {
-	ifstream flux(".\\Resources\\words.txt");
+	ifstream flux(".\\Resources\\test2.txt");
 
 	while (!flux.eof())
 	{
@@ -47,10 +47,19 @@ Dictionary::Dictionary(int difficulty)
 
 void Dictionary::display() const
 {
-	list<Word*>::const_iterator it;
+	vector<Word*>::const_iterator it;
 	for (it = word_.begin(); it != word_.end(); it++)
 	{
 		cout << (*it)->getContent() << endl;
 	}	
 	system("PAUSE");
+}
+
+void Dictionary::drawDictionary(sf::RenderWindow& renderWindow)
+{
+	vector<Word*>::iterator it;
+	for (it = word_.begin(); it != word_.end(); it++)
+	{
+		(*it)->drawWord(renderWindow);
+	}
 }

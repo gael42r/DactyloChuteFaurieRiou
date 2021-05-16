@@ -14,6 +14,7 @@ private:
 	string content_;
 	FText text_;
 	int state_;
+	int currentChar_;
 public:
 	Word(string);
 

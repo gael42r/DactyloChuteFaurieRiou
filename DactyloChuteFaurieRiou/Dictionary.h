@@ -9,6 +9,8 @@ class Dictionary
 {
 private:
 	vector<Word*> word_;
+	Word* currentWord_;
+
 public:
 	Dictionary(int = 1);
 

@@ -15,6 +15,9 @@ private:
 	FText text_;
 	int state_;
 	int currentChar_;
+	//float posX_, posY_;
+	sf::Vector2f pos;
+
 public:
 	Word(string);
 

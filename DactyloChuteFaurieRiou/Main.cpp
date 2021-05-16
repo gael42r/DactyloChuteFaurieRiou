@@ -233,8 +233,12 @@ int main()
 
 				renderWindow.clear(sf::Color::White);
 				renderWindow.draw(sprite);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					game.playAGame(renderWindow, font);
+				}
 				//game.drawDictionary(renderWindow, font);
-				game.playAGame(renderWindow, font);
+				
 				renderWindow.display();
 			}
 			//test();

@@ -6,12 +6,12 @@ Game::Game(Settings settings)
 	dictionary_ = Dictionary(settings.getDifficulty());
 }
 
-void Game::drawDictionary(sf::RenderWindow& renderWindow, sf::Font& font)
-{
-	dictionary_.draw(renderWindow, font);
-}
+//void Game::drawDictionary(sf::RenderWindow& renderWindow, sf::Font& font)
+//{
+//	dictionary_.draw(renderWindow, font);
+//}
 
 void Game::playAGame(sf::RenderWindow& renderWindow, sf::Font& font)
 {
-	dictionary_.drawANewWord(renderWindow, font);
+	dictionary_.addANewWordToQueue(renderWindow, font);
 }

@@ -45,38 +45,59 @@ Dictionary::Dictionary(int difficulty)
 	flux.close();
 }
 
-void Dictionary::display() const //a supprimer
+//void Dictionary::display() const //a supprimer
+//{
+//	vector<Word*>::const_iterator it;
+//	for (it = word_.begin(); it != word_.end(); it++)
+//	{
+//		cout << (*it)->getContent() << endl;
+//	}	
+//	system("PAUSE");
+//}
+
+//void Dictionary::draw(sf::RenderWindow& renderWindow, sf::Font& font)
+//{
+//	vector<Word*>::iterator it;
+//	for (it = word_.begin(); it != word_.end(); it++)
+//	{
+//		(*it)->draw(renderWindow, font);
+//	}
+//}
+
+
+
+
+
+
+
+//void Dictionary::drawANewWord(sf::RenderWindow& renderWindow, sf::Font& font)
+//{
+//	word_[rand() % (word_.size() - 1)];
+//	wordsInGame_.push_back(word_[rand() % (word_.size() - 1)]);
+//	wordsInGame_[0]->draw(renderWindow, font);
+//}
+//void Dictionary::setCurrentWord(Word* word)
+//{
+//	currentWord_ = word;
+//}
+
+
+
+
+
+void Dictionary::addANewWordToQueue(sf::RenderWindow& renderwindow, sf::Font& font)
 {
-	vector<Word*>::const_iterator it;
-	for (it = word_.begin(); it != word_.end(); it++)
-	{
-		cout << (*it)->getContent() << endl;
-	}	
-	system("PAUSE");
+	Word* word = word_[rand() % (word_.size() - 1)];
+	wordsInGame_.push_back(word);
+	word->draw(renderwindow, font);
+	word->setIsInGame(true);
 }
 
-void Dictionary::draw(sf::RenderWindow& renderWindow, sf::Font& font)
+void Dictionary::update()
 {
-	vector<Word*>::iterator it;
-	for (it = word_.begin(); it != word_.end(); it++)
-	{
-		(*it)->draw(renderWindow, font);
-	}
-}
-
-
-
-
-
-
-
-void Dictionary::drawANewWord(sf::RenderWindow& renderWindow, sf::Font& font)
-{
-	word_[rand() % (word_.size() - 1)];
-	wordsInGame_.push_back(word_[rand() % (word_.size() - 1)]);
-	wordsInGame_[0]->draw(renderWindow, font);
-}
-void Dictionary::setCurrentWord(Word* word)
-{
-	currentWord_ = word;
+	currentWord_->setIsCurrent(false);
+	currentWord_->setIsInGame(false);
+	list<Word*>::iterator it = wordsInGame_.begin();
+	it = wordsInGame_.erase(it);
+	currentWord_ = *it;
 }

@@ -13,16 +13,19 @@ class Word
 private:
 	string content_;
 	FText text_;
-	int state_;
+	//int state_;
 	int currentChar_;
-	//float posX_, posY_;
-	sf::Vector2f pos;
+	sf::Vector2f pos_;
+	bool isInGame_;
+	bool isCurrent_;
 
 public:
 	Word(string);
 
 	string getContent() const { return content_; }
+	void setIsInGame(bool);
+	void setIsCurrent(bool);
 	
 	void draw(sf::RenderWindow& renderWindow, sf::Font&);
-	void editState(int);
+	//void editState(int);
 };

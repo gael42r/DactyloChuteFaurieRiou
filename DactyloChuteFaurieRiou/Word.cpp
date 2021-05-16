@@ -8,25 +8,19 @@ Word::Word(string content)
 {
 	content_ = content;
 	state_ = 0;
-	text_.setPosition(rand() % 1000, rand() % 1000);
+
+	text_.setString(content_);
+	text_.setFillColor(sf::Color::Blue);
+	text_.setCharacterSize(25);
+	text_.setPosition(rand() % 1000, 10);
 }
 
-void Word::drawWord(sf::RenderWindow& renderWindow)
+void Word::draw(sf::RenderWindow& renderWindow, sf::Font& font)
 {
-	text_.setString(content_);
-	sf::Font font;
-	if (!font.loadFromFile(".\\Resources\\arial.ttf"))
-	{
-		cout << "Error : Font loading failed." << endl;
-	}
-	
 	text_.setFont(font);
-	text_.setCharacterSize(24);
-	text_.setFillColor(sf::Color::Red);
-	text_.setStyle(sf::Text::Bold);
 	renderWindow.draw(text_);
-	renderWindow.display();
 }
+
 
 void Word::editState(int state)
 {

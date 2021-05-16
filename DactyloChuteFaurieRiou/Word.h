@@ -17,7 +17,7 @@ public:
 
 	string getContent() const { return content_; }
 	sf::Text getText() const { return text_; }
-
-	void drawWord(sf::RenderWindow&);
+	
+	void draw(sf::RenderWindow& renderWindow, sf::Font&);
 	void editState(int);
 };

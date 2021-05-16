@@ -15,5 +15,7 @@ private:
 public:
 	Game(Settings);
 
+	void drawDictionary(sf::RenderWindow&, sf::Font&);
+
 	Dictionary getDictionary() const { return dictionary_; }
 };

@@ -12,7 +12,7 @@ private:
 public:
 	Dictionary(int = 1);
 
-	void drawDictionary(sf::RenderWindow&);
+	void draw(sf::RenderWindow&, sf::Font&);
 	vector<Word*> getListOfWords() { return word_; }
 	void display() const;
 };

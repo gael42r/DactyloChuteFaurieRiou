@@ -55,11 +55,11 @@ void Dictionary::display() const
 	system("PAUSE");
 }
 
-void Dictionary::drawDictionary(sf::RenderWindow& renderWindow)
+void Dictionary::draw(sf::RenderWindow& renderWindow, sf::Font& font)
 {
 	vector<Word*>::iterator it;
 	for (it = word_.begin(); it != word_.end(); it++)
 	{
-		(*it)->drawWord(renderWindow);
+		(*it)->draw(renderWindow, font);
 	}
 }

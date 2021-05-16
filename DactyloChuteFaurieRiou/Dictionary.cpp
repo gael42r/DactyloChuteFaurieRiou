@@ -72,8 +72,9 @@ void Dictionary::draw(sf::RenderWindow& renderWindow, sf::Font& font)
 
 void Dictionary::drawANewWord(sf::RenderWindow& renderWindow, sf::Font& font)
 {
-	Word* word = word_[rand() % word_.size() - 1];
-	wordsInGame_.push_back(word);
+	word_[rand() % (word_.size() - 1)];
+	wordsInGame_.push_back(word_[rand() % (word_.size() - 1)]);
+	wordsInGame_[0]->draw(renderWindow, font);
 }
 void Dictionary::setCurrentWord(Word* word)
 {

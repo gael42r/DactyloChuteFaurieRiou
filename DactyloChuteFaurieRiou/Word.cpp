@@ -9,8 +9,8 @@ Word::Word(string content)
 	content_ = content;
 	state_ = 0;
 
-	text_.setString(content_);
-	text_.setFillColor(sf::Color::Blue);
+	text_.setString("%6" + content_);
+	//text_.setFillColor(sf::Color::Blue);
 	text_.setCharacterSize(25);
 	text_.setPosition(rand() % 1920, 10);
 }

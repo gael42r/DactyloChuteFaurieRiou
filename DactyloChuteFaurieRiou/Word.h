@@ -4,13 +4,15 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+#include"FText.h"
+
 using namespace std;
 
 class Word
 {
 private:
 	string content_;
-	sf::Text text_;
+	FText text_;
 	int state_;
 public:
 	Word(string);

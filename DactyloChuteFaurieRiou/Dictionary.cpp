@@ -45,7 +45,7 @@ Dictionary::Dictionary(int difficulty)
 	flux.close();
 }
 
-void Dictionary::display() const
+void Dictionary::display() const //a supprimer
 {
 	vector<Word*>::const_iterator it;
 	for (it = word_.begin(); it != word_.end(); it++)
@@ -72,7 +72,7 @@ void Dictionary::draw(sf::RenderWindow& renderWindow, sf::Font& font)
 
 void Dictionary::drawANewWord(sf::RenderWindow& renderWindow, sf::Font& font)
 {
-	Word* word = word_[rand() % word_.size()];
+	Word* word = word_[rand() % word_.size() - 1];
 	wordsInGame_.push_back(word);
 }
 void Dictionary::setCurrentWord(Word* word)

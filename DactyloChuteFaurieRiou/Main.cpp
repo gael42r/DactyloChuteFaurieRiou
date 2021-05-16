@@ -233,7 +233,8 @@ int main()
 
 				renderWindow.clear(sf::Color::White);
 				renderWindow.draw(sprite);
-				game.drawDictionary(renderWindow, font);
+				//game.drawDictionary(renderWindow, font);
+				game.playAGame(renderWindow, font);
 				renderWindow.display();
 			}
 			//test();

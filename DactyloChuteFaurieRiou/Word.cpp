@@ -12,7 +12,7 @@ Word::Word(string content)
 	text_.setString(content_);
 	text_.setFillColor(sf::Color::Blue);
 	text_.setCharacterSize(25);
-	text_.setPosition(rand() % 1000, 10);
+	text_.setPosition(rand() % 1920, 10);
 }
 
 void Word::draw(sf::RenderWindow& renderWindow, sf::Font& font)

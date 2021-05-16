@@ -10,3 +10,8 @@ void Game::drawDictionary(sf::RenderWindow& renderWindow, sf::Font& font)
 {
 	dictionary_.draw(renderWindow, font);
 }
+
+void Game::playAGame(sf::RenderWindow& renderWindow, sf::Font& font)
+{
+
+}

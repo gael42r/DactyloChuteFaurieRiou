@@ -52,6 +52,7 @@ void Menu::play()
 
 	Game game(settings_);
 
+	game.restartTimer();
 	while (renderWindow.isOpen())
 	{
 		sf::Event event;
@@ -64,6 +65,7 @@ void Menu::play()
 		renderWindow.clear(sf::Color::White);
 		renderWindow.draw(sprite);
 		game.play(renderWindow);
+		game.drawTimer(renderWindow);
 		renderWindow.display();
 	}
 }

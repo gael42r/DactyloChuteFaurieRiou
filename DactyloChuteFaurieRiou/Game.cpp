@@ -45,3 +45,27 @@ sf::Time Game::chooseFrequency(int speed)
 		break;
 	}
 }
+
+void Game::restartTimer()
+{
+	timer_.restart();
+}
+
+sf::Time Game::remainingTime()
+{
+	sf::Time time = timer_.getElapsedTime();
+	return sf::seconds(60) - time;
+}
+
+void Game::drawTimer(sf::RenderWindow& renderWindow)
+{
+	sf::Text timer;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\arial.ttf");
+	timer.setFont(font);
+	timer.setString("Remaining Time : " + to_string((remainingTime().asMilliseconds())/1000));
+	timer.setPosition(sf::Vector2f(10, 10));
+	timer.setCharacterSize(35);
+	timer.setFillColor(sf::Color::White);
+	renderWindow.draw(timer);
+}

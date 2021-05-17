@@ -13,4 +13,8 @@ void Game::play(sf::RenderWindow& renderWindow)
 	{
 		dictionary_.addNewWordToList();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		dictionary_.deleteCurrentWord();
+	}
 }

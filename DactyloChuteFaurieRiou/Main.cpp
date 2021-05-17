@@ -216,6 +216,7 @@ int main()
 		{
 		case 1: //Play
 			renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
+			renderWindow.setFramerateLimit(30);
 			while (renderWindow.isOpen())
 			{
 				sf::Event event;

@@ -23,7 +23,7 @@ void Word::draw(sf::RenderWindow& renderWindow)
 	text_.setFillColor(sf::Color::Red);
 	text_.setCharacterSize(25);
 	text_.setPosition(pos_);
-	pos_.y++;
+	pos_.y = pos_.y + 3;
 	renderWindow.draw(text_);
 
 }

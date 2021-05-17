@@ -16,7 +16,6 @@ Dictionary::Dictionary()
 		word_.push_back(new Word(str));	
 	}
 	flux.close();
-
 	it_ = word_.begin();
 }
 

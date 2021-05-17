@@ -37,7 +37,35 @@ void Menu::editScoreboard(Score* score)
 
 void Menu::play()
 {
+	sf::Texture texture;
+	texture.loadFromFile(".\\Resources\\test.png");
 
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
+	sf::Vector2u sz = texture.getSize();
+	sf::RenderWindow renderWindow;
+	
+	renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
+	
+	renderWindow.setFramerateLimit(30);
+
+	Game game(settings_);
+
+	while (renderWindow.isOpen())
+	{
+		sf::Event event;
+		while (renderWindow.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				renderWindow.close();
+		}
+
+		renderWindow.clear(sf::Color::White);
+		renderWindow.draw(sprite);
+		game.play(renderWindow);
+		renderWindow.display();
+	}
 }
 
 void Menu::setUp()

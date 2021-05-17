@@ -190,19 +190,7 @@ int main()
 
 	for (;;)
 	{
-		sf::Texture texture;
-		if (!texture.loadFromFile(".\\Resources\\test.png"))
-		{
-			// erreur...
-		}
-		sf::Sprite sprite;
-		sprite.setTexture(texture);
-
-		sf::Vector2u sz = texture.getSize();
-		sf::RenderWindow renderWindow;
 		
-
-		Game game(menu.getSettings());
 		
 		menu.display();
 
@@ -215,23 +203,7 @@ int main()
 		switch (choice)
 		{
 		case 1: //Play
-			renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
-			renderWindow.setFramerateLimit(30);
-			while (renderWindow.isOpen())
-			{
-				sf::Event event;
-				while (renderWindow.pollEvent(event))
-				{
-					if (event.type == sf::Event::Closed)
-						renderWindow.close();
-				}
-				
-				renderWindow.clear(sf::Color::White);
-				renderWindow.draw(sprite);
-				game.play(renderWindow);
-				renderWindow.display();
-			}
-			//test();
+			menu.play();
 			break;
 		case 2: //Settings
 			menu.setUp();

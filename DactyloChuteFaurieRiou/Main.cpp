@@ -190,12 +190,6 @@ int main()
 
 	for (;;)
 	{
-		sf::Font font;
-		if (font.loadFromFile(".\\Resources\\arial.ttf"))
-		{
-			// erreur...
-		}
-
 		sf::Texture texture;
 		if (!texture.loadFromFile(".\\Resources\\test.png"))
 		{
@@ -230,15 +224,10 @@ int main()
 					if (event.type == sf::Event::Closed)
 						renderWindow.close();
 				}
-
+				
 				renderWindow.clear(sf::Color::White);
 				renderWindow.draw(sprite);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-				{
-					game.playAGame(renderWindow, font);
-				}
-				//game.drawDictionary(renderWindow, font);
-				
+				game.play(renderWindow);
 				renderWindow.display();
 			}
 			//test();

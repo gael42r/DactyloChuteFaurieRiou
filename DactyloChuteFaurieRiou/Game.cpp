@@ -3,15 +3,14 @@
 Game::Game(Settings settings)
 {
 	settings_ = settings;
-	dictionary_ = Dictionary(settings.getDifficulty());
+	dictionary_ = Dictionary();
 }
 
-//void Game::drawDictionary(sf::RenderWindow& renderWindow, sf::Font& font)
-//{
-//	dictionary_.draw(renderWindow, font);
-//}
-
-void Game::playAGame(sf::RenderWindow& renderWindow, sf::Font& font)
+void Game::play(sf::RenderWindow& renderWindow)
 {
-	dictionary_.addANewWordToQueue(renderWindow, font);
+	dictionary_.drawWords(renderWindow);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		dictionary_.addNewWordToList();
+	}
 }

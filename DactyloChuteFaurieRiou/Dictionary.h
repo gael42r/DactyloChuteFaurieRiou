@@ -8,21 +8,15 @@
 class Dictionary
 {
 private:
-	vector<Word*> word_;
+	list<Word*> word_;
+	list<Word*> onScreenWords_;
 
-	Word* currentWord_;
-	list<Word*> wordsInGame_;
+	list<Word*>::iterator it_;
 
 public:
-	Dictionary(int = 1);
+	Dictionary();
 
-	//void draw(sf::RenderWindow&, sf::Font&);
-	//void display() const;
-
-
-	//void drawANewWord(sf::RenderWindow&, sf::Font&);
-	//void setCurrentWord(Word*);
-
-	void addANewWordToQueue(sf::RenderWindow&, sf::Font&);
-	void update();
+	void drawWords(sf::RenderWindow&);
+	void addNewWordToList();
+	void deleteCurrentWord();
 };

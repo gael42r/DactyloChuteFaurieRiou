@@ -15,6 +15,5 @@ private:
 public:
 	Game(Settings);
 
-	void drawDictionary(sf::RenderWindow&, sf::Font&);
-	void playAGame(sf::RenderWindow&, sf::Font&);
+	void play(sf::RenderWindow&);
 };

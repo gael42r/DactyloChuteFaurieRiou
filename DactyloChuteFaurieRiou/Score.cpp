@@ -1,10 +1,4 @@
-#include<iostream>
-#include <iomanip>  
-#include <ctime>
-
 #include "Score.h"
-
-using namespace std;
 
 Score::Score(string player, string difficulty, int numberOfWords)
 {

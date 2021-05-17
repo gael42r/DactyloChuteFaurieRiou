@@ -1,9 +1,4 @@
-#include<iostream>
-#include <iomanip>  
-
 #include "Scoreboard.h"
-
-using namespace std;
 
 Scoreboard::Scoreboard()
 {

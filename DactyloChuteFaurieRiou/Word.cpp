@@ -1,8 +1,4 @@
-#include<iostream>
-
 #include "Word.h"
-
-using namespace std;
 
 Word::Word(string content)
 {

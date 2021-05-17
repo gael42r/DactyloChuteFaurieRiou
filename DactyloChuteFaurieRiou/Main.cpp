@@ -1,14 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <SFML/Graphics.hpp>
-#include <xstring>
-
 #include "Menu.h"
-#include "Settings.h"
-#include "Scoreboard.h"
-#include "Score.h"
 
-using namespace std;
 //
 //void test()
 //{

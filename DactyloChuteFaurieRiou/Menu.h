@@ -1,7 +1,9 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 #include "Settings.h"
 #include "Scoreboard.h"
+#include "Score.h"
 #include "Game.h"
 
 class Menu

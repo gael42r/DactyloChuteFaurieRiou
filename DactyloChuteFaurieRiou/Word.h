@@ -1,8 +1,8 @@
 #pragma once
 
+#include<SFML/Graphics.hpp>
 #include<iostream>
-#include <SFML/Graphics.hpp>
-#include <string>
+#include<string>
 
 using namespace std;
 

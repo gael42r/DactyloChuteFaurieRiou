@@ -1,8 +1,4 @@
-#include<iostream>
-
 #include "Settings.h"
-
-using namespace std;
 
 Settings::Settings(int difficulty)
 {

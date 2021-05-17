@@ -1,9 +1,4 @@
-#include<iostream>
-#include <fstream>
-
 #include "Dictionary.h"
-
-using namespace std;
 
 Dictionary::Dictionary()
 {
@@ -29,7 +24,7 @@ void Dictionary::drawWords(sf::RenderWindow& renderWindow)
 
 void Dictionary::addNewWordToList()
 {
-	onScreenWords_.push_front((*it_));
+	onScreenWords_.push_back((*it_));
 	it_++;
 }
 

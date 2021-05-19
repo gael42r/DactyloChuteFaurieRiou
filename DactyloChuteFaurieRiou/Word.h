@@ -6,6 +6,7 @@
 
 
 #include"RichText.hpp"
+#include"FText.h"
 
 using namespace std;
 
@@ -13,10 +14,13 @@ class Word
 {
 private:
 	string content_;
-	sf::Text text_;
+	sfe::RichText text_;
 	sf::Vector2f pos_;
 
 	int currentCaracter_;
+
+	bool isTextAlreadyAssigned_;
+	bool isTextUpdated_;
 
 public:
 	Word(string);

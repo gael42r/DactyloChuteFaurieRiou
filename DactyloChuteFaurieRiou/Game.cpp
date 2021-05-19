@@ -129,7 +129,10 @@ void Game::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event& event)
 {
 	if (event.type == sf::Event::TextEntered)
 	{
-		dictionary_.eventTextEntered(renderWindow, event);
+		if (dictionary_.eventTextEntered(renderWindow, event))
+		{
+			upScore();
+		}
 	}
 }
 

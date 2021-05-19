@@ -33,10 +33,18 @@ void Dictionary::deleteCurrentWord()
 	onScreenWords_.pop_front();
 }
 
-void Dictionary::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
+bool Dictionary::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
-	if (onScreenWords_.front()->eventTextEntered(renderWindow, event))
+	if (onScreenWords_.size() > 0)
 	{
-		deleteCurrentWord();
+		if (onScreenWords_.front()->eventTextEntered(renderWindow, event))
+		{
+			deleteCurrentWord();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

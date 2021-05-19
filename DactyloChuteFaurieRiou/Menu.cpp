@@ -53,7 +53,7 @@ void Menu::play()
 	Game game(settings_);
 
 	game.restartTimer();
-	game.temp();
+	//game.temp();
 
 	sf::Event event;
 

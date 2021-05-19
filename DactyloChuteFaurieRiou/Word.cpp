@@ -27,15 +27,15 @@ void Word::draw(sf::RenderWindow& renderWindow)
 bool Word::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
 	if (event.text.unicode == sf::String(content_[currentCaracter_]))
-			{
-				if (currentCaracter_ < content_.size() - 1)
-				{
-					currentCaracter_++;
-					return false;
-				}
-				else
-				{
-					return true;
-				}
-			}
+	{
+		if (currentCaracter_ < content_.size() - 1)
+		{
+			currentCaracter_++;
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }

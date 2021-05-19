@@ -26,9 +26,13 @@ private:
 public:
 	Game(Settings);
 
-
 	void drawTimer(sf::RenderWindow&);
-	void play(sf::RenderWindow&);
-
+	void drawDictionary(sf::RenderWindow&);
 	void restartTimer();
+	void upScore();
+	void drawScore(sf::RenderWindow&);
+	void drawSettings(sf::RenderWindow&);
+
+	void eventTextEntered(sf::RenderWindow&);
+	void temp();
 };

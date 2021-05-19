@@ -19,4 +19,6 @@ public:
 	void drawWords(sf::RenderWindow&);
 	void addNewWordToList();
 	void deleteCurrentWord();
+
+	void eventTextEntered(sf::RenderWindow&);
 };

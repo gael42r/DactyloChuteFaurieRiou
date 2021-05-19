@@ -17,5 +17,9 @@ private:
 
 public:
 	Score(string = "Unknown" , string = "Unknown", int = 0);
+
+	int getNumberOfWords() const { return numberOfWords_; }
+
 	void display() const;
+	void up();
 };

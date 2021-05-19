@@ -4,10 +4,11 @@ Game::Game(Settings settings)
 {
 	settings_ = settings;
 	dictionary_ = Dictionary();
+	score_ = Score();
 	frequency_ = chooseFrequency(settings_.getDifficulty());
 }
 
-void Game::play(sf::RenderWindow& renderWindow)
+void Game::drawDictionary(sf::RenderWindow& renderWindow)
 {
 	dictionary_.drawWords(renderWindow);
 	if (getClockTime() > frequency_)
@@ -15,6 +16,11 @@ void Game::play(sf::RenderWindow& renderWindow)
 		dictionary_.addNewWordToList();
 		restartClock();
 	}
+}
+
+void Game::temp()
+{
+	dictionary_.addNewWordToList();
 }
 
 void Game::restartClock()
@@ -68,4 +74,58 @@ void Game::drawTimer(sf::RenderWindow& renderWindow)
 	timer.setCharacterSize(35);
 	timer.setFillColor(sf::Color::White);
 	renderWindow.draw(timer);
+}
+
+void Game::upScore()
+{
+	score_.up();
+}
+
+void Game::drawScore(sf::RenderWindow& renderWindow)
+{
+	sf::Text score;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\arial.ttf");
+	score.setFont(font);
+	score.setString("Score : " + to_string(score_.getNumberOfWords()));
+	score.setPosition(sf::Vector2f(10, 50));
+	score.setCharacterSize(35);
+	score.setFillColor(sf::Color::White);
+	renderWindow.draw(score);
+}
+
+void Game::drawSettings(sf::RenderWindow& renderWindow)
+{
+	sf::Text difficulty;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\arial.ttf");
+	difficulty.setFont(font);
+	difficulty.setString("Difficulty : " + settings_.getStrDifficulty());
+	difficulty.setPosition(sf::Vector2f(10, 90));
+	difficulty.setCharacterSize(35);
+	difficulty.setFillColor(sf::Color::White);
+	renderWindow.draw(difficulty);
+}
+
+//void Game::eventCurrentCaracter(sf::RenderWindow& renderWindow)
+//{
+//	sf::Event event;
+//	while (renderWindow.pollEvent(event))
+//	{
+//
+//		if (event.type == sf::Event::TextEntered)
+//		{
+//			if (event.text.unicode == sf::String("n"))
+//			{
+//				upScore();
+//
+//			}
+//
+//		}
+//	}
+//}
+
+void Game::eventTextEntered(sf::RenderWindow& renderWindow)
+{
+	dictionary_.eventTextEntered(renderWindow);
 }

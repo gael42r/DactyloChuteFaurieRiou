@@ -13,8 +13,12 @@ private:
 	sf::Text text_;
 	sf::Vector2f pos_;
 
+	int currentCaracter_;
+
 public:
 	Word(string);
 
 	void draw(sf::RenderWindow&);
+
+	bool eventTextEntered(sf::RenderWindow&);
 };

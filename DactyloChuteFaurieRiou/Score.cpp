@@ -22,3 +22,8 @@ void Score::display() const
 {
 	cout << setw(11) << player_ << " | " << setw(16) << numberOfWords_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
 }
+
+void Score::up()
+{
+	numberOfWords_++;
+}

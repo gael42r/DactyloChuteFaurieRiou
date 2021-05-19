@@ -53,19 +53,30 @@ void Menu::play()
 	Game game(settings_);
 
 	game.restartTimer();
+	game.temp();
 	while (renderWindow.isOpen())
 	{
 		sf::Event event;
+		game.eventTextEntered(renderWindow);
 		while (renderWindow.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+			{
 				renderWindow.close();
+			}
+				
 		}
+		
+		
 
 		renderWindow.clear(sf::Color::White);
 		renderWindow.draw(sprite);
-		game.play(renderWindow);
+
+		game.drawDictionary(renderWindow);
+		
 		game.drawTimer(renderWindow);
+		game.drawScore(renderWindow);
+		game.drawSettings(renderWindow);
 		renderWindow.display();
 	}
 }

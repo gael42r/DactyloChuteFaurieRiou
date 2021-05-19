@@ -24,14 +24,9 @@ void Word::draw(sf::RenderWindow& renderWindow)
 
 }
 
-bool Word::eventTextEntered(sf::RenderWindow& renderWindow)
+bool Word::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
-	sf::Event event;
-	while (renderWindow.pollEvent(event))
-	{
-		if (event.type == sf::Event::TextEntered)
-		{
-			if (event.text.unicode == sf::String(content_[currentCaracter_]))
+	if (event.text.unicode == sf::String(content_[currentCaracter_]))
 			{
 				if (currentCaracter_ < content_.size() - 1)
 				{
@@ -43,6 +38,4 @@ bool Word::eventTextEntered(sf::RenderWindow& renderWindow)
 					return true;
 				}
 			}
-		}
-	}
 }

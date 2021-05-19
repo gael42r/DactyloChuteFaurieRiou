@@ -20,5 +20,5 @@ public:
 	void addNewWordToList();
 	void deleteCurrentWord();
 
-	void eventTextEntered(sf::RenderWindow&);
+	void eventTextEntered(sf::RenderWindow&, sf::Event);
 };

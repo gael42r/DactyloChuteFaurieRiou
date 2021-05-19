@@ -54,18 +54,20 @@ void Menu::play()
 
 	game.restartTimer();
 	game.temp();
+
+	sf::Event event;
+
 	while (renderWindow.isOpen())
 	{
-		sf::Event event;
-		game.eventTextEntered(renderWindow);
+		//Events	
+		
 		while (renderWindow.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-			{
-				renderWindow.close();
-			}
-				
+		{	
+			game.eventClose(renderWindow, event);
+			game.eventTextEntered(renderWindow, event);
+			
 		}
+		
 		
 		
 

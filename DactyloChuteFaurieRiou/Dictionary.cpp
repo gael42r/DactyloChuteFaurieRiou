@@ -33,9 +33,9 @@ void Dictionary::deleteCurrentWord()
 	onScreenWords_.pop_front();
 }
 
-void Dictionary::eventTextEntered(sf::RenderWindow& renderWindow)
+void Dictionary::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
-	if (onScreenWords_.front()->eventTextEntered(renderWindow))
+	if (onScreenWords_.front()->eventTextEntered(renderWindow, event))
 	{
 		deleteCurrentWord();
 	}

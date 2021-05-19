@@ -125,7 +125,18 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 //	}
 //}
 
-void Game::eventTextEntered(sf::RenderWindow& renderWindow)
+void Game::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event& event)
 {
-	dictionary_.eventTextEntered(renderWindow);
+	if (event.type == sf::Event::TextEntered)
+	{
+		dictionary_.eventTextEntered(renderWindow, event);
+	}
+}
+
+void Game::eventClose(sf::RenderWindow& renderWindow, sf::Event& event)
+{
+	if (event.type == sf::Event::Closed)
+	{
+		renderWindow.close();
+	}
 }

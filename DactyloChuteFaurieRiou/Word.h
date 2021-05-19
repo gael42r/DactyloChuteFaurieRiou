@@ -4,6 +4,9 @@
 #include<iostream>
 #include<string>
 
+
+#include"RichText.hpp"
+
 using namespace std;
 
 class Word
@@ -20,5 +23,5 @@ public:
 
 	void draw(sf::RenderWindow&);
 
-	bool eventTextEntered(sf::RenderWindow&);
+	bool eventTextEntered(sf::RenderWindow&, sf::Event);
 };

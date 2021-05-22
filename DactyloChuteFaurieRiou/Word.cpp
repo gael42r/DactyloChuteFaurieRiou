@@ -17,7 +17,7 @@ Word::Word(string content)
 //string stillToBeEntered = content_.substr(currentCaracter_, content_.size());
 //text_ << sf::Color::Green << alreadyEntered << sf::Color::Yellow << currentCharacter << sf::Color::Red << stillToBeEntered;
 
-void Word::draw(sf::RenderWindow& renderWindow)
+void Word::drawCurrent(sf::RenderWindow& renderWindow)
 {
 	sf::Font font;
 	font.loadFromFile(".\\Resources\\arial.ttf");
@@ -43,6 +43,22 @@ void Word::draw(sf::RenderWindow& renderWindow)
 	pos_.y = pos_.y + 3;
 	renderWindow.draw(text_);
 
+}
+
+void Word::draw(sf::RenderWindow& renderWindow)
+{
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\arial.ttf");
+	text_.setFont(font);
+	text_.clear();
+	text_ << sf::Color::Red << content_;
+	
+	text_.setCharacterSize(25);
+	text_.setPosition(pos_);
+	pos_.y = pos_.y + 3;
+	renderWindow.draw(text_);
+	isTextAlreadyAssigned_ = true;
+	isTextUpdated_ = true;
 }
 
 bool Word::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)

@@ -144,3 +144,15 @@ void Game::deleteOutWords()
 {
 	dictionary_.deleteOutOfScreenWords();
 }
+
+bool Game::isTimeIsUp()
+{
+	if (remainingTime() < sf::Time::Zero)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

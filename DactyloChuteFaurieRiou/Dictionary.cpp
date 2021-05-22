@@ -18,7 +18,15 @@ void Dictionary::drawWords(sf::RenderWindow& renderWindow)
 {
 	for (list<Word*>::iterator it = onScreenWords_.begin(); it != onScreenWords_.end(); it++)
 	{
-		(*it)->draw(renderWindow);
+		if (it == onScreenWords_.begin())
+		{
+			(*it)->drawCurrent(renderWindow);
+		}
+		else
+		{
+			(*it)->draw(renderWindow);
+		}
+		
 	}
 }
 

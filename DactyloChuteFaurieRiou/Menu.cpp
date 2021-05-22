@@ -57,29 +57,38 @@ void Menu::play()
 
 	sf::Event event;
 
+
+
 	while (renderWindow.isOpen())
 	{
-		//Events	
-		
 		while (renderWindow.pollEvent(event))
-		{	
+		{
 			game.eventClose(renderWindow, event);
-			game.eventTextEntered(renderWindow, event);
-			
 		}
-		
-		
-		
+		while (!game.isTimeIsUp())
+		{
+			while (renderWindow.pollEvent(event))
+			{
+				game.eventClose(renderWindow, event);
+				game.eventTextEntered(renderWindow, event);
+			}
 
-		renderWindow.clear(sf::Color::White);
-		renderWindow.draw(sprite);
 
-		game.drawDictionary(renderWindow);
-		game.deleteOutWords();
-		game.drawTimer(renderWindow);
-		game.drawScore(renderWindow);
-		game.drawSettings(renderWindow);
-		renderWindow.display();
+
+
+			renderWindow.clear(sf::Color::White);
+			renderWindow.draw(sprite);
+
+			game.drawDictionary(renderWindow);
+			game.deleteOutWords();
+			game.drawTimer(renderWindow);
+			game.drawScore(renderWindow);
+			game.drawSettings(renderWindow);
+			renderWindow.display();
+		}
+
+		
+		
 	}
 }
 

@@ -25,6 +25,7 @@ private:
 public:
 	Word(string);
 
+	void drawCurrent(sf::RenderWindow&);
 	void draw(sf::RenderWindow&);
 
 	bool eventTextEntered(sf::RenderWindow&, sf::Event);

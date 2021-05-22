@@ -35,4 +35,6 @@ public:
 	void eventTextEntered(sf::RenderWindow&, sf::Event&);
 	void eventClose(sf::RenderWindow&, sf::Event&);
 	void deleteOutWords();
+
+	bool isTimeIsUp();
 };

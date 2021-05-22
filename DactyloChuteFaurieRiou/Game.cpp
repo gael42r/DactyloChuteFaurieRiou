@@ -18,11 +18,6 @@ void Game::drawDictionary(sf::RenderWindow& renderWindow)
 	}
 }
 
-void Game::temp()
-{
-	dictionary_.addNewWordToList();
-}
-
 void Game::restartClock()
 {
 	clock_.restart();
@@ -142,4 +137,10 @@ void Game::eventClose(sf::RenderWindow& renderWindow, sf::Event& event)
 	{
 		renderWindow.close();
 	}
+}
+
+
+void Game::deleteOutWords()
+{
+	dictionary_.deleteOutOfScreenWords();
 }

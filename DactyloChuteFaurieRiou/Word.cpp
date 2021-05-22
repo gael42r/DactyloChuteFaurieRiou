@@ -38,11 +38,8 @@ void Word::draw(sf::RenderWindow& renderWindow)
 			text_ << sf::Color::Green << alreadyEntered << sf::Color::Yellow << currentCharacter << sf::Color::Red << stillToBeEntered;
 		}
 	}
-	
-	//text_.setString(content_.substr(currentCaracter_,content_.size()));
-	//text_.setFillColor(sf::Color::Red);
 	text_.setCharacterSize(25);
-	text_.setPosition(pos_);
+	text_.setPosition(pos_);	
 	pos_.y = pos_.y + 3;
 	renderWindow.draw(text_);
 

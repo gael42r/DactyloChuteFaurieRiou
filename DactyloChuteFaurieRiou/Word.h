@@ -28,4 +28,7 @@ public:
 	void draw(sf::RenderWindow&);
 
 	bool eventTextEntered(sf::RenderWindow&, sf::Event);
+
+
+	float getPosY() const { return pos_.y; }
 };

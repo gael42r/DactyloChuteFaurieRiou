@@ -32,8 +32,7 @@ public:
 	void upScore();
 	void drawScore(sf::RenderWindow&);
 	void drawSettings(sf::RenderWindow&);
-
 	void eventTextEntered(sf::RenderWindow&, sf::Event&);
 	void eventClose(sf::RenderWindow&, sf::Event&);
-	void temp();
+	void deleteOutWords();
 };

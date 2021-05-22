@@ -35,7 +35,7 @@ void Dictionary::deleteCurrentWord()
 
 bool Dictionary::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
-	if (onScreenWords_.size() > 0)
+	if (!onScreenWords_.empty())
 	{
 		if (onScreenWords_.front()->eventTextEntered(renderWindow, event))
 		{
@@ -45,6 +45,32 @@ bool Dictionary::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event even
 		else
 		{
 			return false;
+		}
+	}
+}
+
+bool Dictionary::isCurrentWordOutOfScreen()
+{
+	if (!onScreenWords_.empty())
+	{
+		if (onScreenWords_.front()->getPosY() > 1080)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+void Dictionary::deleteOutOfScreenWords()
+{
+	if (!onScreenWords_.empty())
+	{
+		if (isCurrentWordOutOfScreen())
+		{
+			deleteCurrentWord();
 		}
 	}
 }

@@ -75,7 +75,7 @@ void Menu::play()
 		renderWindow.draw(sprite);
 
 		game.drawDictionary(renderWindow);
-		
+		game.deleteOutWords();
 		game.drawTimer(renderWindow);
 		game.drawScore(renderWindow);
 		game.drawSettings(renderWindow);

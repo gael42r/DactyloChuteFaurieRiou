@@ -10,7 +10,6 @@ class Dictionary
 private:
 	list<Word*> word_;
 	list<Word*> onScreenWords_;
-
 	list<Word*>::iterator it_;
 
 public:
@@ -19,6 +18,7 @@ public:
 	void drawWords(sf::RenderWindow&);
 	void addNewWordToList();
 	void deleteCurrentWord();
-
 	bool eventTextEntered(sf::RenderWindow&, sf::Event);
+	bool isCurrentWordOutOfScreen();
+	void deleteOutOfScreenWords();
 };

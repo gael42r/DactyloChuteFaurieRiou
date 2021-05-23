@@ -11,7 +11,6 @@ class Dictionary
 private:
 	vector<Word*> word_;
 	list<Word*> onScreenWords_;
-	//list<Word*>::iterator it_;
 
 	int numberCharLastWord_;
 

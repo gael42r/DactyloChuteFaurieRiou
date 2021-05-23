@@ -2,15 +2,16 @@
 
 #include <fstream>
 #include <list>
+#include <vector>
 
 #include"Word.h"
 
 class Dictionary
 {
 private:
-	list<Word*> word_;
+	vector<Word*> word_;
 	list<Word*> onScreenWords_;
-	list<Word*>::iterator it_;
+	//list<Word*>::iterator it_;
 
 	int numberCharLastWord_;
 

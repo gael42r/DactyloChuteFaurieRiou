@@ -11,7 +11,7 @@ Dictionary::Dictionary()
 		word_.push_back(new Word(str));	
 	}
 	flux.close();
-	it_ = word_.begin();
+	//it_ = word_.begin();
 
 	numberCharLastWord_ = 0;
 }
@@ -32,10 +32,15 @@ void Dictionary::drawWords(sf::RenderWindow& renderWindow)
 	}
 }
 
+//void Dictionary::addNewWordToList()
+//{
+//	onScreenWords_.push_back((*it_));
+//	it_++;
+//}
+
 void Dictionary::addNewWordToList()
 {
-	onScreenWords_.push_back((*it_));
-	it_++;
+	onScreenWords_.push_back(word_[rand() % word_.size()]);
 }
 
 void Dictionary::deleteCurrentWord()

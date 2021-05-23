@@ -9,11 +9,11 @@ Game::Game(Settings settings)
 
 	madeByTexture_.loadFromFile(".\\Resources\\MadeBy.png");
 	madeBy_.setTexture(madeByTexture_);
-	madeBy_.setOrigin(5.f, 10.f);
+	madeBy_.setOrigin(madeByTexture_.getSize().x / 2, madeByTexture_.getSize().y / 2);
 
 	dactyloChuteTexture_.loadFromFile(".\\Resources\\DactyloChute.png");
 	dactyloChute_.setTexture(dactyloChuteTexture_);
-	//dactyloChute_.setOrigin(sf::Vector2f(1920 / 2, 1080 / 2));
+	dactyloChute_.setOrigin(dactyloChuteTexture_.getSize().x / 2, dactyloChuteTexture_.getSize().y / 2);
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -197,5 +197,5 @@ void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
 {
 	dactyloChute_.setPosition(Vector2f(1920 / 2, 1080 / 2));
 	renderWindow.draw(dactyloChute_);
-	dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.01, dactyloChute_.getScale().y - 0.01));
+	dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.005, dactyloChute_.getScale().y - 0.005));
 }

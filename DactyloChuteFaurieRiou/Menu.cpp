@@ -76,6 +76,8 @@ void Menu::play()
 			renderWindow.draw(sprite);
 			game.drawMadeBy(renderWindow);
 			//game.drawDactyloChute(renderWindow);
+			game.drawEndScore(renderWindow);
+			game.drawName(renderWindow);
 			renderWindow.display();
 		}
 

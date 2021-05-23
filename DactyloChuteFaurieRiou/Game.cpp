@@ -75,7 +75,7 @@ void Game::drawTimer(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	timer.setFont(font);
 	timer.clear();
-	timer << sf::Color::White << "Remaining Time : " << sf::Color::Yellow << to_string((remainingTime().asMilliseconds()) / 1000);
+	timer << sf::Color::White << "remaining time : " << sf::Color::Yellow << to_string((remainingTime().asMilliseconds()) / 1000);
 	timer.setPosition(sf::Vector2f(15, 10));
 	timer.setCharacterSize(35);
 	renderWindow.draw(timer);
@@ -93,7 +93,7 @@ void Game::drawScore(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	score.setFont(font);
 	score.clear();
-	score << sf::Color::White << "Score : " << sf::Color::Cyan << to_string(score_.getNumberOfChar());
+	score << sf::Color::White << "score : " << sf::Color::Cyan << to_string(score_.getNumberOfChar());
 	score.setPosition(sf::Vector2f(15, 50));
 	score.setCharacterSize(35);
 	renderWindow.draw(score);
@@ -106,7 +106,7 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	difficulty.setFont(font);
 	difficulty.clear();
-	difficulty << sf::Color::White << "Difficulty : " << sf::Color::Magenta << settings_.getStrDifficulty();
+	difficulty << sf::Color::White << "difficulty : " << sf::Color::Magenta << settings_.getStrDifficulty();
 	difficulty.setPosition(sf::Vector2f(15, 90));
 	difficulty.setCharacterSize(35);
 	renderWindow.draw(difficulty);
@@ -202,13 +202,13 @@ bool Game::isPreGameTimeIsUp()
 
 void Game::drawMadeBy(sf::RenderWindow& renderWindow)
 {
-	madeBy_.setPosition(Vector2f(1920 / 2, 1080 / 2));
+	madeBy_.setPosition(1920 / 2, 1080 / 2);
 	renderWindow.draw(madeBy_);
 }
 
 void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
 {
-	dactyloChute_.setPosition(Vector2f(1920 / 2, 1080 / 2));
+	dactyloChute_.setPosition(1920 / 2, 1080 / 2);
 	renderWindow.draw(dactyloChute_);
 	if (dactyloChute_.getScale().x > 0 && dactyloChute_.getScale().y > 0)
 	{
@@ -219,4 +219,46 @@ void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
 void Game::playMusic()
 {
 	music_.play();
+}
+
+void Game::drawEndScore(sf::RenderWindow& renderWindow)
+{
+	sfe::RichText endScore;
+	sfe::RichText score;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+
+	endScore.setFont(font);
+	endScore.clear();
+	endScore << sf::Color::Yellow << "score";
+	endScore.setCharacterSize(90);
+	endScore.setOrigin(endScore.getLocalBounds().left + endScore.getLocalBounds().width / 2.0f, endScore.getLocalBounds().top + endScore.getLocalBounds().height / 2.0f);
+	endScore.setPosition(sf::Vector2f(1920 / 2.0f, 300));
+
+	score.setFont(font);
+	score.clear();
+	/*score << sf::Color::Cyan << to_string(score_.getNumberOfChar());*/
+	score << sf::Color::Cyan << "164";
+	score.setCharacterSize(90);
+	score.setOrigin(score.getLocalBounds().left + score.getLocalBounds().width / 2.0f, score.getLocalBounds().top + score.getLocalBounds().height / 2.0f);
+	score.setPosition(sf::Vector2f(1920 / 2.0f, 400));
+
+	renderWindow.draw(endScore);
+	renderWindow.draw(score);
+}
+
+void Game::drawName(sf::RenderWindow& renderWindow)
+{
+	sfe::RichText name;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+
+	name.setFont(font);
+	name.clear();
+	name << sf::Color::Yellow << "name";
+	name.setCharacterSize(90);
+	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
+	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
+
+	renderWindow.draw(name);
 }

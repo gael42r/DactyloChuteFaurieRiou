@@ -55,4 +55,7 @@ public:
 	void drawMadeBy(sf::RenderWindow&);
 	void drawDactyloChute(sf::RenderWindow&);
 	void playMusic();
+
+	void drawEndScore(sf::RenderWindow&);
+	void drawName(sf::RenderWindow&);
 };

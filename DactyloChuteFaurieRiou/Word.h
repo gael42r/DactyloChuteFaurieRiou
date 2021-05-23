@@ -6,7 +6,6 @@
 
 
 #include"RichText.hpp"
-#include"FText.h"
 
 using namespace std;
 

@@ -27,7 +27,7 @@ void Word::drawCurrent(sf::RenderWindow& renderWindow)
 	string stillToBeEntered = content_.substr(currentCaracter_ + 1, content_.size());
 	if (!isTextAlreadyAssigned_)
 	{
-		text_ << sf::Color::Green << alreadyEntered << sf::Color::Yellow << currentCharacter << sf::Color::Red << stillToBeEntered;
+		text_ << sf::Color::White << alreadyEntered << sf::Color::Cyan << currentCharacter << sf::Color::Yellow << stillToBeEntered;
 		isTextAlreadyAssigned_ = true;
 	}
 	else
@@ -35,7 +35,7 @@ void Word::drawCurrent(sf::RenderWindow& renderWindow)
 		if (isTextUpdated_)
 		{
 			text_.clear();
-			text_ << sf::Color::Green << alreadyEntered << sf::Color::Yellow << currentCharacter << sf::Color::Red << stillToBeEntered;
+			text_ << sf::Color::White << alreadyEntered << sf::Color::Cyan << currentCharacter << sf::Color::Yellow << stillToBeEntered;
 		}
 	}
 	text_.setCharacterSize(25);
@@ -51,7 +51,7 @@ void Word::draw(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\arial.ttf");
 	text_.setFont(font);
 	text_.clear();
-	text_ << sf::Color::Red << content_;
+	text_ << sf::Color::Yellow << content_;
 	
 	text_.setCharacterSize(25);
 	text_.setPosition(pos_);

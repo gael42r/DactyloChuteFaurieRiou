@@ -170,14 +170,31 @@ bool Game::isTimeIsUp()
 //
 //}
 
-void Game::restartPreGameTimer()
+void Game::restartMadeByTimer()
 {
-	preGameTimer_.restart();
+	madeByTimer_.restart();
 }
 
-bool Game::isPreGameTimeIsUp()
+bool Game::isMadeByTimeIsUp()
 {
-	if (preGameTimer_.getElapsedTime() > sf::seconds(5))
+	if (madeByTimer_.getElapsedTime() > sf::seconds(3))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Game::restartDactyloChuteTimer()
+{
+	dactyloChuteTimer_.restart();
+}
+
+bool Game::isDactyloChuteTimeIsUp()
+{
+	if (dactyloChuteTimer_.getElapsedTime() > sf::seconds(5))
 	{
 		return true;
 	}

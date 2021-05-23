@@ -52,7 +52,7 @@ void Menu::play()
 
 	Game game(settings_);
 
-	game.restartPreGameTimer();
+	game.restartMadeByTimer();
 
 	sf::Event event;
 
@@ -66,7 +66,7 @@ void Menu::play()
 		{
 			game.eventClose(renderWindow, event);
 		}
-		while (!game.isPreGameTimeIsUp())
+		while (!game.isMadeByTimeIsUp())
 		{
 			while (renderWindow.pollEvent(event))
 			{
@@ -75,6 +75,19 @@ void Menu::play()
 			renderWindow.clear(sf::Color::White);
 			renderWindow.draw(sprite);
 			game.drawMadeBy(renderWindow);
+			//game.drawDactyloChute(renderWindow);
+			renderWindow.display();
+		}
+
+		game.restartDactyloChuteTimer();
+		while (!game.isDactyloChuteTimeIsUp())
+		{
+			while (renderWindow.pollEvent(event))
+			{
+				game.eventClose(renderWindow, event);
+			}
+			renderWindow.clear(sf::Color::White);
+			renderWindow.draw(sprite);
 			game.drawDactyloChute(renderWindow);
 			renderWindow.display();
 		}

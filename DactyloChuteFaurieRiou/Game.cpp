@@ -6,6 +6,12 @@ Game::Game(Settings settings)
 	dictionary_ = Dictionary();
 	score_ = Score();
 	frequency_ = chooseFrequency(settings_.getDifficulty());
+
+	madeByTexture_.loadFromFile(".\\Resources\\MadeBy.png");
+	madeBy_.setTexture(madeByTexture_);
+
+	dactyloChuteTexture_.loadFromFile(".\\Resources\\DactyloChute.png");
+	dactyloChute_.setTexture(dactyloChuteTexture_);
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -155,4 +161,39 @@ bool Game::isTimeIsUp()
 	{
 		return false;
 	}
+}
+
+//void Game::drawPreGame(sf::RenderWindow& renderWindow)
+//{
+//
+//}
+
+void Game::restartPreGameTimer()
+{
+	preGameTimer_.restart();
+}
+
+bool Game::isPreGameTimeIsUp()
+{
+	if (preGameTimer_.getElapsedTime() > sf::seconds(5))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void Game::drawMadeBy(sf::RenderWindow& renderWindow)
+{
+	madeBy_.setPosition(Vector2f(220, 510));
+	renderWindow.draw(madeBy_);
+}
+
+void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
+{
+	dactyloChute_.setPosition(Vector2f(220, 510));
+	renderWindow.draw(dactyloChute_);
+	dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.01, dactyloChute_.getScale().y - 0.01));
 }

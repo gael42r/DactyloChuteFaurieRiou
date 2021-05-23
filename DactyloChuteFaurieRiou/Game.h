@@ -17,6 +17,13 @@ private:
 	sf::Clock clock_;
 	sf::Time frequency_;
 	sf::Clock timer_;
+	sf::Clock preGameTimer_;
+
+	sf::Texture madeByTexture_;
+	sf::Sprite madeBy_;
+
+	sf::Texture dactyloChuteTexture_;
+	sf::Sprite dactyloChute_;
 
 	void restartClock();
 	sf::Time getClockTime();
@@ -35,6 +42,10 @@ public:
 	void eventTextEntered(sf::RenderWindow&, sf::Event&);
 	void eventClose(sf::RenderWindow&, sf::Event&);
 	void deleteOutWords();
-
 	bool isTimeIsUp();
+	void restartPreGameTimer();
+	bool isPreGameTimeIsUp();
+
+	void drawMadeBy(sf::RenderWindow&);
+	void drawDactyloChute(sf::RenderWindow&);
 };

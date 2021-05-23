@@ -16,7 +16,6 @@ public:
 	Menu();
 
 	Settings getSettings() const { return settings_; }
-	//Scoreboard getScoreboard() const { return scoreboard_; }
 
 	void title() const;
 	void display() const;

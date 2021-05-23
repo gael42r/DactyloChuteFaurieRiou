@@ -38,7 +38,7 @@ void Menu::editScoreboard(Score* score)
 void Menu::play()
 {
 	sf::Texture texture;
-	texture.loadFromFile(".\\Resources\\test.png");
+	texture.loadFromFile(".\\Resources\\background.png");
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
@@ -48,15 +48,16 @@ void Menu::play()
 	
 	renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
 	
-	renderWindow.setFramerateLimit(30);
+	renderWindow.setFramerateLimit(40);
 
 	Game game(settings_);
 
-	game.restartTimer();
-	//game.temp();
+	game.restartPreGameTimer();
 
 	sf::Event event;
 
+	/*sf::CircleShape s(50.f);
+	s.setFillColor(sf::Color::Blue);*/
 
 
 	while (renderWindow.isOpen())
@@ -65,6 +66,19 @@ void Menu::play()
 		{
 			game.eventClose(renderWindow, event);
 		}
+		while (!game.isPreGameTimeIsUp())
+		{
+			while (renderWindow.pollEvent(event))
+			{
+				game.eventClose(renderWindow, event);
+			}
+			renderWindow.clear(sf::Color::White);
+			renderWindow.draw(sprite);
+			game.drawMadeBy(renderWindow);
+			game.drawDactyloChute(renderWindow);
+			renderWindow.display();
+		}
+		game.restartTimer();
 		while (!game.isTimeIsUp())
 		{
 			while (renderWindow.pollEvent(event))
@@ -86,9 +100,16 @@ void Menu::play()
 			game.drawSettings(renderWindow);
 			renderWindow.display();
 		}
-
-		
-		
+		while (game.isTimeIsUp())
+		{
+			while (renderWindow.pollEvent(event))
+			{
+				game.eventClose(renderWindow, event);
+			}
+			renderWindow.clear(sf::Color::White);
+			renderWindow.draw(sprite);
+			renderWindow.display();
+		}
 	}
 }
 

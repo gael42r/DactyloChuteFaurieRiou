@@ -17,7 +17,7 @@ private:
 
 public:
 	Score(string = "Unknown" , string = "Unknown", int = 0);
-
+	Score(const Score&);
 	int getNumberOfChar() const { return numberOfChar_; }
 	void setPlayer(string str) { player_ = str; }
 	void display() const;

@@ -26,8 +26,8 @@ private:
 	sf::Texture dactyloChuteTexture_;
 	sf::Sprite dactyloChute_;
 	sf::Music music_;
-
 	string nameEntered_;
+	bool isEnterPressed_;
 
 	void restartClock();
 	sf::Time getClockTime();
@@ -60,5 +60,8 @@ public:
 	void drawName(sf::RenderWindow&);
 	void drawPressEnter(sf::RenderWindow&);
 	void eventTextName(sf::Event&);
-	Score eventEnter(sf::Event&, sf::RenderWindow&);
+	void eventEnter(sf::Event&, sf::RenderWindow&);
+
+	bool isEnterAlreadyPressed();
+	Score getScore() const { return score_; }
 };

@@ -1,6 +1,6 @@
 #include "Score.h"
 
-Score::Score(string player, string difficulty, int numberOfWords)
+Score::Score(string difficulty, string player, int numberOfWords)
 {
 	player_ = player;
 	numberOfChar_ = numberOfWords;
@@ -16,6 +16,14 @@ Score::Score(string player, string difficulty, int numberOfWords)
 	strftime(date_string, 50, "%d/%m/%Y %R", d);
 
 	date_ = string(date_string);
+}
+
+Score::Score(const Score& score)
+{
+	player_ = score.player_;
+	numberOfChar_ = score.numberOfChar_;
+	difficulty_ = score.difficulty_;
+	date_ = score.date_;
 }
 
 void Score::display() const

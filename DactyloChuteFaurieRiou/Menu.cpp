@@ -118,13 +118,13 @@ void Menu::play()
 			game.drawSettings(renderWindow);
 			renderWindow.display();
 		}
-		while (game.isTimeIsUp())
+		while (game.isTimeIsUp() && !game.isEnterAlreadyPressed())
 		{
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
 				game.eventTextName(event);
-				editScoreboard(new Score(game.eventEnter(event, renderWindow)));
+				game.eventEnter(event, renderWindow);
 			}
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
@@ -134,6 +134,8 @@ void Menu::play()
 			renderWindow.display();
 		}
 	}
+
+	editScoreboard(new Score(game.getScore()));
 }
 
 void Menu::setUp()

@@ -4,7 +4,7 @@ Game::Game(Settings settings)
 {
 	settings_ = settings;
 	dictionary_ = Dictionary();
-	score_ = Score();
+	score_ = Score(settings_.getStrDifficulty());
 	frequency_ = chooseFrequency(settings_.getDifficulty());
 
 	madeByTexture_.loadFromFile(".\\Resources\\MadeBy.png");
@@ -18,6 +18,8 @@ Game::Game(Settings settings)
 	music_.openFromFile(".\\Resources\\theme.ogg");
 
 	nameEntered_ = "";
+
+	isEnterPressed_ = false;
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -67,7 +69,7 @@ void Game::restartTimer()
 sf::Time Game::remainingTime()
 {
 	sf::Time time = timer_.getElapsedTime();
-	return sf::seconds(60) - time;
+	return sf::seconds(5) - time;
 }
 
 void Game::drawTimer(sf::RenderWindow& renderWindow)
@@ -239,8 +241,7 @@ void Game::drawEndScore(sf::RenderWindow& renderWindow)
 
 	score.setFont(font);
 	score.clear();
-	/*score << sf::Color::Cyan << to_string(score_.getNumberOfChar());*/
-	score << sf::Color::Cyan << "164";
+	score << sf::Color::Cyan << to_string(score_.getNumberOfChar());
 	score.setCharacterSize(90);
 	score.setOrigin(score.getLocalBounds().left + score.getLocalBounds().width / 2.0f, score.getLocalBounds().top + score.getLocalBounds().height / 2.0f);
 	score.setPosition(sf::Vector2f(1920 / 2.0f, 400));
@@ -328,7 +329,7 @@ void Game::drawPressEnter(sf::RenderWindow& renderWindow)
 	}
 }
 
-Score Game::eventEnter(sf::Event& event, sf::RenderWindow& renderWindow)
+void Game::eventEnter(sf::Event& event, sf::RenderWindow& renderWindow)
 {
 	if (event.type == sf::Event::KeyPressed)
 	{
@@ -336,10 +337,22 @@ Score Game::eventEnter(sf::Event& event, sf::RenderWindow& renderWindow)
 		{
 			if (!nameEntered_.empty())
 			{
+				isEnterPressed_ = true;
 				score_.setPlayer(nameEntered_);
 				renderWindow.close();
-				return score_;
 			}
 		}
+	}
+}
+
+bool Game::isEnterAlreadyPressed()
+{
+	if (isEnterPressed_)
+	{
+		return true;
+	}
+	else
+	{
+		false;
 	}
 }

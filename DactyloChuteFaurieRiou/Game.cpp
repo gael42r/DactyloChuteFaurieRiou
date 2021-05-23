@@ -303,7 +303,7 @@ void Game::eventTextName(sf::Event& event)
 				nameEntered_.pop_back();
 			}
 		}
-		else if(event.text.unicode >= 65 && event.text.unicode <=90 || event.text.unicode >= 97 && event.text.unicode <= 122)
+		else if(event.text.unicode >= 97 && event.text.unicode <= 122)
 		{
 			nameEntered_.push_back(event.text.unicode);
 		}

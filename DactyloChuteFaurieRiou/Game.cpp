@@ -68,16 +68,29 @@ sf::Time Game::remainingTime()
 	return sf::seconds(60) - time;
 }
 
+//void Game::drawTimer(sf::RenderWindow& renderWindow)
+//{
+//	sf::Text timer;
+//	sf::Font font;
+//	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+//	timer.setFont(font);
+//	timer.setString("Remaining Time : " + to_string((remainingTime().asMilliseconds())/1000));
+//	timer.setPosition(sf::Vector2f(15, 10));
+//	timer.setCharacterSize(35);
+//	timer.setFillColor(sf::Color::White);
+//	renderWindow.draw(timer);
+//}
+
 void Game::drawTimer(sf::RenderWindow& renderWindow)
 {
-	sf::Text timer;
+	sfe::RichText timer;
 	sf::Font font;
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	timer.setFont(font);
-	timer.setString("Remaining Time : " + to_string((remainingTime().asMilliseconds())/1000));
+	timer.clear();
+	timer << sf::Color::White << "Remaining Time : " << sf::Color::Yellow << to_string((remainingTime().asMilliseconds()) / 1000);
 	timer.setPosition(sf::Vector2f(15, 10));
 	timer.setCharacterSize(35);
-	timer.setFillColor(sf::Color::White);
 	renderWindow.draw(timer);
 }
 
@@ -88,27 +101,27 @@ void Game::upScore()
 
 void Game::drawScore(sf::RenderWindow& renderWindow)
 {
-	sf::Text score;
+	sfe::RichText score;
 	sf::Font font;
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	score.setFont(font);
-	score.setString("Score : " + to_string(score_.getNumberOfWords()));
+	score.clear();
+	score << sf::Color::White << "Score : " << sf::Color::Cyan << to_string(score_.getNumberOfWords());
 	score.setPosition(sf::Vector2f(15, 50));
 	score.setCharacterSize(35);
-	score.setFillColor(sf::Color::White);
 	renderWindow.draw(score);
 }
 
 void Game::drawSettings(sf::RenderWindow& renderWindow)
 {
-	sf::Text difficulty;
+	sfe::RichText difficulty;
 	sf::Font font;
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	difficulty.setFont(font);
-	difficulty.setString("Difficulty : " + settings_.getStrDifficulty());
+	difficulty.clear();
+	difficulty << sf::Color::White << "Difficulty : " << sf::Color::Magenta << settings_.getStrDifficulty();
 	difficulty.setPosition(sf::Vector2f(15, 90));
 	difficulty.setCharacterSize(35);
-	difficulty.setFillColor(sf::Color::White);
 	renderWindow.draw(difficulty);
 }
 

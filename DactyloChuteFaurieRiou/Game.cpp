@@ -308,3 +308,38 @@ void Game::eventTextName(sf::Event& event)
 		}
 	}
 }
+
+void Game::drawPressEnter(sf::RenderWindow& renderWindow)
+{
+	if (!nameEntered_.empty())
+	{
+		sfe::RichText pressEnter;
+		sf::Font font;
+		font.loadFromFile(".\\Resources\\Starjedi.ttf");
+
+		pressEnter.setFont(font);
+		pressEnter.clear();
+		pressEnter << sf::Color::White << "Press ENTER to continue...";
+		pressEnter.setCharacterSize(40);
+		pressEnter.setOrigin(pressEnter.getLocalBounds().left + pressEnter.getLocalBounds().width / 2.0f, pressEnter.getLocalBounds().top + pressEnter.getLocalBounds().height / 2.0f);
+		pressEnter.setPosition(sf::Vector2f(1920 / 2.0f, 900));
+
+		renderWindow.draw(pressEnter);
+	}
+}
+
+Score Game::eventEnter(sf::Event& event, sf::RenderWindow& renderWindow)
+{
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			if (!nameEntered_.empty())
+			{
+				score_.setPlayer(nameEntered_);
+				renderWindow.close();
+				return score_;
+			}
+		}
+	}
+}

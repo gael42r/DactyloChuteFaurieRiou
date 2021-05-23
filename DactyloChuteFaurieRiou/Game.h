@@ -58,6 +58,7 @@ public:
 	void playMusic();
 	void drawEndScore(sf::RenderWindow&);
 	void drawName(sf::RenderWindow&);
-
+	void drawPressEnter(sf::RenderWindow&);
 	void eventTextName(sf::Event&);
+	Score eventEnter(sf::Event&, sf::RenderWindow&);
 };

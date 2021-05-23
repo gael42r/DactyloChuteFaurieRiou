@@ -56,9 +56,6 @@ void Menu::play()
 
 	sf::Event event;
 
-	/*sf::CircleShape s(50.f);
-	s.setFillColor(sf::Color::Blue);*/
-
 
 	while (renderWindow.isOpen())
 	{
@@ -71,15 +68,10 @@ void Menu::play()
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
-				//
-				//game.eventTextName(event);
 			}
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 			game.drawMadeBy(renderWindow);
-			//
-			//game.drawEndScore(renderWindow);
-			//game.drawName(renderWindow);
 			renderWindow.display();
 		}
 
@@ -116,10 +108,6 @@ void Menu::play()
 				game.eventClose(renderWindow, event);
 				game.eventTextEntered(renderWindow, event);
 			}
-
-
-
-
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 
@@ -135,14 +123,14 @@ void Menu::play()
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
-				//
 				game.eventTextName(event);
+				editScoreboard(new Score(game.eventEnter(event, renderWindow)));
 			}
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
-			//
 			game.drawEndScore(renderWindow);
 			game.drawName(renderWindow);
+			game.drawPressEnter(renderWindow);
 			renderWindow.display();
 		}
 	}

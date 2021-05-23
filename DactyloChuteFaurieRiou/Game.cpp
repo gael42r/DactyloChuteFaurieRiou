@@ -69,7 +69,7 @@ void Game::restartTimer()
 sf::Time Game::remainingTime()
 {
 	sf::Time time = timer_.getElapsedTime();
-	return sf::seconds(5) - time;
+	return sf::seconds(60) - time;
 }
 
 void Game::drawTimer(sf::RenderWindow& renderWindow)

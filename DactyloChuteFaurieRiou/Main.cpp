@@ -1,11 +1,10 @@
 #include "Menu.h"
-
+#include<iostream>
+#include<string>
+using namespace std;
 
 int main()
 {
-	//test
-
-
 	Menu menu;
 
 	menu.title();

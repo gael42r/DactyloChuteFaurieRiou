@@ -12,6 +12,7 @@ class Score
 private:
 	string player_;
 	int numberOfChar_;
+	float charPerSec_;
 	string difficulty_;
 	string date_;
 

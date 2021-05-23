@@ -30,9 +30,9 @@ Settings::Settings(int difficulty)
 
 void Settings::display() const
 {
-	cout << "-----------------------------------* SETTINGS *-----------------------------------" << endl;
+	cout << "-------------------------------------* SETTINGS *-------------------------------------" << endl;
 	cout << "- Difficulty : " << strDifficulty_ << endl;
-	cout << "----------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 }
 
 bool Settings::edit()
@@ -46,12 +46,12 @@ bool Settings::edit()
 
 	if (reply == 'y')
 	{
-		cout << "-------------------* SETTINGS EDITION *-------------------" << endl;
+		cout << "---------------------------------* SETTINGS EDITION *---------------------------------" << endl;
 
 		int difficulty = 0;
 		while (difficulty < 1 || difficulty > 3)
 		{
-			cout << "- Difficulty (1 to 3) : ";
+			cout << "- Difficulty (1:Easy | 2:Normal | 3:Hard) : ";
 			cin >> difficulty;
 		}
 		if (difficulty >= 1 && difficulty <= 3)

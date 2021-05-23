@@ -15,14 +15,14 @@ Scoreboard::~Scoreboard()
 
 void Scoreboard::display() const
 {
-	cout << "----------------------------------* SCOREBOARD *----------------------------------" << endl;
-	cout << setw(11) << "Player" << " | " << setw(16) << "Number of words" << " | " << setw(10) << "Difficulty" << " | " << setw(17) << "Date" << endl;
+	cout << "------------------------------------* SCOREBOARD *------------------------------------" << endl;
+	cout << setw(11) << "Player" << " | " << setw(18) << "Words per minutes" << " | " << setw(18) << "Words per seconds" << " | " << setw(10) << "Difficulty" << " | " << setw(17) << "Date" << endl;
 	list<Score*>::const_iterator it;
 	for (it = scoreboard_.begin(); it != scoreboard_.end(); it++)
 	{
 		(*it)->display();
 	}
-	cout << "----------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 }
 
 void Scoreboard::addScore(Score* score)

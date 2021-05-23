@@ -7,9 +7,6 @@ int main()
 
 
 	Menu menu;
-	menu.editScoreboard(new Score(menu.getSettings().getStrDifficulty(), "Gael", 250));
-	menu.editScoreboard(new Score(menu.getSettings().getStrDifficulty(), "Antoine", 120));
-
 
 	menu.title();
 

@@ -1,10 +1,11 @@
 #include "Score.h"
 
-Score::Score(string difficulty, string player, int numberOfWords)
+Score::Score(string difficulty, string player, int numberOfChar)
 {
 	player_ = player;
-	numberOfChar_ = numberOfWords;
+	numberOfChar_ = numberOfChar;
 	difficulty_ = difficulty;
+	charPerSec_ = numberOfChar / 60.f;
 
 	//Current date
 	time_t date = time(NULL);
@@ -24,11 +25,12 @@ Score::Score(const Score& score)
 	numberOfChar_ = score.numberOfChar_;
 	difficulty_ = score.difficulty_;
 	date_ = score.date_;
+	charPerSec_ = score.numberOfChar_ / 60.f;
 }
 
 void Score::display() const
 {
-	cout << setw(11) << player_ << " | " << setw(16) << numberOfChar_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
+	cout << setw(11) << player_ << " | " << setw(18) << numberOfChar_ << " | " << setw(18) << charPerSec_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
 }
 
 void Score::up(int nbChar)

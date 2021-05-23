@@ -14,7 +14,7 @@ private:
 	int wordsDifficulty_;
 
 public:
-	Settings(int = 1);
+	Settings(int = 2);
 
 	string getStrDifficulty() const { return strDifficulty_; }
 	int getDifficulty() const { return difficulty_; }

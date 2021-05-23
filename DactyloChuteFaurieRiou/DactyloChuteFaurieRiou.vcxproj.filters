@@ -39,9 +39,6 @@
     <ClCompile Include="Dictionary.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="FText.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="RichText.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

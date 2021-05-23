@@ -11,15 +11,15 @@ class Score
 {
 private:
 	string player_;
-	int numberOfWords_;
+	int numberOfChar_;
 	string difficulty_;
 	string date_;
 
 public:
 	Score(string = "Unknown" , string = "Unknown", int = 0);
 
-	int getNumberOfWords() const { return numberOfWords_; }
+	int getNumberOfChar() const { return numberOfChar_; }
 
 	void display() const;
-	void up();
+	void up(int);
 };

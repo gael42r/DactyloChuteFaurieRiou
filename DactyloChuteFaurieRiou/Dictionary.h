@@ -12,6 +12,8 @@ private:
 	list<Word*> onScreenWords_;
 	list<Word*>::iterator it_;
 
+	int numberCharLastWord_;
+
 public:
 	Dictionary();
 
@@ -21,4 +23,5 @@ public:
 	bool eventTextEntered(sf::RenderWindow&, sf::Event);
 	bool isCurrentWordOutOfScreen();
 	void deleteOutOfScreenWords();
+	int getNumberCharLastWord() const { return numberCharLastWord_; }
 };

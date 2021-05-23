@@ -20,9 +20,7 @@ private:
 	sf::Clock timer_;
 	sf::Clock madeByTimer_;
 	sf::Clock dactyloChuteTimer_;
-
 	sf::Clock preGameTimer_;
-
 	sf::Texture madeByTexture_;
 	sf::Sprite madeBy_;
 	sf::Texture dactyloChuteTexture_;
@@ -52,12 +50,9 @@ public:
 	bool isMadeByTimeIsUp();
 	void restartDactyloChuteTimer();
 	bool isDactyloChuteTimeIsUp();
-
 	void restartPreGameTimer();
 	bool isPreGameTimeIsUp();
-
 	void drawMadeBy(sf::RenderWindow&);
 	void drawDactyloChute(sf::RenderWindow&);
-
 	void playMusic();
 };

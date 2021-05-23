@@ -30,6 +30,8 @@ public:
 
 	bool eventTextEntered(sf::RenderWindow&, sf::Event);
 
-
+	
 	float getPosY() const { return pos_.y; }
+
+	int getNumberOfChar() const { return content_.length(); }
 };

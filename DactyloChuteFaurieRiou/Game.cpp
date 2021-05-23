@@ -68,19 +68,6 @@ sf::Time Game::remainingTime()
 	return sf::seconds(60) - time;
 }
 
-//void Game::drawTimer(sf::RenderWindow& renderWindow)
-//{
-//	sf::Text timer;
-//	sf::Font font;
-//	font.loadFromFile(".\\Resources\\Starjedi.ttf");
-//	timer.setFont(font);
-//	timer.setString("Remaining Time : " + to_string((remainingTime().asMilliseconds())/1000));
-//	timer.setPosition(sf::Vector2f(15, 10));
-//	timer.setCharacterSize(35);
-//	timer.setFillColor(sf::Color::White);
-//	renderWindow.draw(timer);
-//}
-
 void Game::drawTimer(sf::RenderWindow& renderWindow)
 {
 	sfe::RichText timer;
@@ -96,7 +83,7 @@ void Game::drawTimer(sf::RenderWindow& renderWindow)
 
 void Game::upScore()
 {
-	score_.up();
+	score_.up(dictionary_.getNumberCharLastWord());
 }
 
 void Game::drawScore(sf::RenderWindow& renderWindow)
@@ -106,7 +93,7 @@ void Game::drawScore(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	score.setFont(font);
 	score.clear();
-	score << sf::Color::White << "Score : " << sf::Color::Cyan << to_string(score_.getNumberOfWords());
+	score << sf::Color::White << "Score : " << sf::Color::Cyan << to_string(score_.getNumberOfChar());
 	score.setPosition(sf::Vector2f(15, 50));
 	score.setCharacterSize(35);
 	renderWindow.draw(score);
@@ -124,24 +111,6 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 	difficulty.setCharacterSize(35);
 	renderWindow.draw(difficulty);
 }
-
-//void Game::eventCurrentCaracter(sf::RenderWindow& renderWindow)
-//{
-//	sf::Event event;
-//	while (renderWindow.pollEvent(event))
-//	{
-//
-//		if (event.type == sf::Event::TextEntered)
-//		{
-//			if (event.text.unicode == sf::String("n"))
-//			{
-//				upScore();
-//
-//			}
-//
-//		}
-//	}
-//}
 
 void Game::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event& event)
 {
@@ -179,11 +148,6 @@ bool Game::isTimeIsUp()
 		return false;
 	}
 }
-
-//void Game::drawPreGame(sf::RenderWindow& renderWindow)
-//{
-//
-//}
 
 void Game::restartMadeByTimer()
 {

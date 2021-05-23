@@ -12,6 +12,8 @@ Dictionary::Dictionary()
 	}
 	flux.close();
 	it_ = word_.begin();
+
+	numberCharLastWord_ = 0;
 }
 
 void Dictionary::drawWords(sf::RenderWindow& renderWindow)
@@ -38,6 +40,7 @@ void Dictionary::addNewWordToList()
 
 void Dictionary::deleteCurrentWord()
 {
+	numberCharLastWord_ = onScreenWords_.front()->getNumberOfChar();
 	onScreenWords_.pop_front();
 }
 

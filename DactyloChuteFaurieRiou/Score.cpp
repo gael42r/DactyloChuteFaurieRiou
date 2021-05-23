@@ -3,7 +3,7 @@
 Score::Score(string player, string difficulty, int numberOfWords)
 {
 	player_ = player;
-	numberOfWords_ = numberOfWords;
+	numberOfChar_ = numberOfWords;
 	difficulty_ = difficulty;
 
 	//Current date
@@ -20,10 +20,10 @@ Score::Score(string player, string difficulty, int numberOfWords)
 
 void Score::display() const
 {
-	cout << setw(11) << player_ << " | " << setw(16) << numberOfWords_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
+	cout << setw(11) << player_ << " | " << setw(16) << numberOfChar_ << " | " << setw(10) << difficulty_ << " | " << setw(17) << date_ << endl;
 }
 
-void Score::up()
+void Score::up(int nbChar)
 {
-	numberOfWords_++;
+	numberOfChar_ = numberOfChar_ + nbChar;
 }

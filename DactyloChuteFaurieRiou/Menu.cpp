@@ -71,13 +71,15 @@ void Menu::play()
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
+				//
+				//game.eventTextName(event);
 			}
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 			game.drawMadeBy(renderWindow);
-			//game.drawDactyloChute(renderWindow);
-			game.drawEndScore(renderWindow);
-			game.drawName(renderWindow);
+			//
+			//game.drawEndScore(renderWindow);
+			//game.drawName(renderWindow);
 			renderWindow.display();
 		}
 
@@ -133,9 +135,14 @@ void Menu::play()
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
+				//
+				game.eventTextName(event);
 			}
 			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
+			//
+			game.drawEndScore(renderWindow);
+			game.drawName(renderWindow);
 			renderWindow.display();
 		}
 	}

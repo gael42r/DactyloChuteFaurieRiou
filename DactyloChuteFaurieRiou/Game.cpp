@@ -16,6 +16,8 @@ Game::Game(Settings settings)
 	dactyloChute_.setOrigin(dactyloChuteTexture_.getSize().x / 2, dactyloChuteTexture_.getSize().y / 2);
 
 	music_.openFromFile(".\\Resources\\theme.ogg");
+
+	nameEntered_ = "";
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -247,9 +249,26 @@ void Game::drawEndScore(sf::RenderWindow& renderWindow)
 	renderWindow.draw(score);
 }
 
+//void Game::drawName(sf::RenderWindow& renderWindow)
+//{
+//	sfe::RichText name;
+//	sf::Font font;
+//	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+//
+//	name.setFont(font);
+//	name.clear();
+//	name << sf::Color::Yellow << "name";
+//	name.setCharacterSize(90);
+//	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
+//	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
+//
+//	renderWindow.draw(name);
+//}
+
 void Game::drawName(sf::RenderWindow& renderWindow)
 {
 	sfe::RichText name;
+	sfe::RichText nameEntered;
 	sf::Font font;
 	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 
@@ -260,5 +279,32 @@ void Game::drawName(sf::RenderWindow& renderWindow)
 	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
 	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
 
+	nameEntered.setFont(font);
+	nameEntered.clear();
+	nameEntered << sf::Color::Magenta << nameEntered_;
+	nameEntered.setCharacterSize(90);
+	nameEntered.setOrigin(nameEntered.getLocalBounds().left + nameEntered.getLocalBounds().width / 2.0f, nameEntered.getLocalBounds().top + nameEntered.getLocalBounds().height / 2.0f);
+	nameEntered.setPosition(sf::Vector2f(1920 / 2.0f, 700));
+
 	renderWindow.draw(name);
+	renderWindow.draw(nameEntered);
+}
+
+
+void Game::eventTextName(sf::Event& event)
+{
+	if (event.type == sf::Event::TextEntered)
+	{
+		if (event.text.unicode == 8)
+		{
+			if (!nameEntered_.empty())
+			{
+				nameEntered_.pop_back();
+			}
+		}
+		else if(event.text.unicode >= 65 && event.text.unicode <=90 || event.text.unicode >= 97 && event.text.unicode <= 122)
+		{
+			nameEntered_.push_back(event.text.unicode);
+		}
+	}
 }

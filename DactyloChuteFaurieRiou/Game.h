@@ -25,8 +25,9 @@ private:
 	sf::Sprite madeBy_;
 	sf::Texture dactyloChuteTexture_;
 	sf::Sprite dactyloChute_;
-
 	sf::Music music_;
+
+	string nameEntered_;
 
 	void restartClock();
 	sf::Time getClockTime();
@@ -55,7 +56,8 @@ public:
 	void drawMadeBy(sf::RenderWindow&);
 	void drawDactyloChute(sf::RenderWindow&);
 	void playMusic();
-
 	void drawEndScore(sf::RenderWindow&);
 	void drawName(sf::RenderWindow&);
+
+	void eventTextName(sf::Event&);
 };

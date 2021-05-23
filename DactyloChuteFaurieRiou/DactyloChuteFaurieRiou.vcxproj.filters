@@ -65,9 +65,6 @@
     <ClInclude Include="Dictionary.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FText.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="RichText.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>

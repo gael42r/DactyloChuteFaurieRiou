@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include<SFML/Audio.hpp>
 #include<iostream>
 #include<string>
 
@@ -20,11 +21,14 @@ private:
 	sf::Clock madeByTimer_;
 	sf::Clock dactyloChuteTimer_;
 
+	sf::Clock preGameTimer_;
+
 	sf::Texture madeByTexture_;
 	sf::Sprite madeBy_;
-
 	sf::Texture dactyloChuteTexture_;
 	sf::Sprite dactyloChute_;
+
+	sf::Music music_;
 
 	void restartClock();
 	sf::Time getClockTime();
@@ -49,6 +53,11 @@ public:
 	void restartDactyloChuteTimer();
 	bool isDactyloChuteTimeIsUp();
 
+	void restartPreGameTimer();
+	bool isPreGameTimeIsUp();
+
 	void drawMadeBy(sf::RenderWindow&);
 	void drawDactyloChute(sf::RenderWindow&);
+
+	void playMusic();
 };

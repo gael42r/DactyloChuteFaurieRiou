@@ -72,7 +72,7 @@ void Menu::play()
 			{
 				game.eventClose(renderWindow, event);
 			}
-			renderWindow.clear(sf::Color::White);
+			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 			game.drawMadeBy(renderWindow);
 			//game.drawDactyloChute(renderWindow);
@@ -80,17 +80,30 @@ void Menu::play()
 		}
 
 		game.restartDactyloChuteTimer();
+		game.playMusic();
 		while (!game.isDactyloChuteTimeIsUp())
 		{
 			while (renderWindow.pollEvent(event))
 			{
 				game.eventClose(renderWindow, event);
 			}
-			renderWindow.clear(sf::Color::White);
+			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 			game.drawDactyloChute(renderWindow);
 			renderWindow.display();
 		}
+		game.restartPreGameTimer();
+		while (!game.isPreGameTimeIsUp())
+		{
+			while (renderWindow.pollEvent(event))
+			{
+				game.eventClose(renderWindow, event);
+			}
+			renderWindow.clear(sf::Color::Black);
+			renderWindow.draw(sprite);
+			renderWindow.display();
+		}
+
 		game.restartTimer();
 		while (!game.isTimeIsUp())
 		{
@@ -103,7 +116,7 @@ void Menu::play()
 
 
 
-			renderWindow.clear(sf::Color::White);
+			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 
 			game.drawDictionary(renderWindow);
@@ -119,7 +132,7 @@ void Menu::play()
 			{
 				game.eventClose(renderWindow, event);
 			}
-			renderWindow.clear(sf::Color::White);
+			renderWindow.clear(sf::Color::Black);
 			renderWindow.draw(sprite);
 			renderWindow.display();
 		}

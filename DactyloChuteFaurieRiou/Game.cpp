@@ -14,6 +14,8 @@ Game::Game(Settings settings)
 	dactyloChuteTexture_.loadFromFile(".\\Resources\\DactyloChute.png");
 	dactyloChute_.setTexture(dactyloChuteTexture_);
 	dactyloChute_.setOrigin(dactyloChuteTexture_.getSize().x / 2, dactyloChuteTexture_.getSize().y / 2);
+
+	music_.openFromFile(".\\Resources\\theme.ogg");
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -70,10 +72,10 @@ void Game::drawTimer(sf::RenderWindow& renderWindow)
 {
 	sf::Text timer;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\arial.ttf");
+	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	timer.setFont(font);
 	timer.setString("Remaining Time : " + to_string((remainingTime().asMilliseconds())/1000));
-	timer.setPosition(sf::Vector2f(10, 10));
+	timer.setPosition(sf::Vector2f(15, 10));
 	timer.setCharacterSize(35);
 	timer.setFillColor(sf::Color::White);
 	renderWindow.draw(timer);
@@ -88,10 +90,10 @@ void Game::drawScore(sf::RenderWindow& renderWindow)
 {
 	sf::Text score;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\arial.ttf");
+	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	score.setFont(font);
 	score.setString("Score : " + to_string(score_.getNumberOfWords()));
-	score.setPosition(sf::Vector2f(10, 50));
+	score.setPosition(sf::Vector2f(15, 50));
 	score.setCharacterSize(35);
 	score.setFillColor(sf::Color::White);
 	renderWindow.draw(score);
@@ -101,10 +103,10 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 {
 	sf::Text difficulty;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\arial.ttf");
+	font.loadFromFile(".\\Resources\\Starjedi.ttf");
 	difficulty.setFont(font);
 	difficulty.setString("Difficulty : " + settings_.getStrDifficulty());
-	difficulty.setPosition(sf::Vector2f(10, 90));
+	difficulty.setPosition(sf::Vector2f(15, 90));
 	difficulty.setCharacterSize(35);
 	difficulty.setFillColor(sf::Color::White);
 	renderWindow.draw(difficulty);
@@ -204,6 +206,23 @@ bool Game::isDactyloChuteTimeIsUp()
 	}
 }
 
+void Game::restartPreGameTimer()
+{
+	preGameTimer_.restart();
+}
+
+bool Game::isPreGameTimeIsUp()
+{
+	if (preGameTimer_.getElapsedTime() > sf::seconds(4))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void Game::drawMadeBy(sf::RenderWindow& renderWindow)
 {
 	madeBy_.setPosition(Vector2f(1920 / 2, 1080 / 2));
@@ -214,5 +233,13 @@ void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
 {
 	dactyloChute_.setPosition(Vector2f(1920 / 2, 1080 / 2));
 	renderWindow.draw(dactyloChute_);
-	dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.005, dactyloChute_.getScale().y - 0.005));
+	if (dactyloChute_.getScale().x > 0 && dactyloChute_.getScale().y > 0)
+	{
+		dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.00475, dactyloChute_.getScale().y - 0.00475));
+	}
+}
+
+void Game::playMusic()
+{
+	music_.play();
 }

@@ -9,9 +9,11 @@ Game::Game(Settings settings)
 
 	madeByTexture_.loadFromFile(".\\Resources\\MadeBy.png");
 	madeBy_.setTexture(madeByTexture_);
+	madeBy_.setOrigin(5.f, 10.f);
 
 	dactyloChuteTexture_.loadFromFile(".\\Resources\\DactyloChute.png");
 	dactyloChute_.setTexture(dactyloChuteTexture_);
+	//dactyloChute_.setOrigin(sf::Vector2f(1920 / 2, 1080 / 2));
 }
 
 void Game::drawDictionary(sf::RenderWindow& renderWindow)
@@ -187,13 +189,13 @@ bool Game::isPreGameTimeIsUp()
 
 void Game::drawMadeBy(sf::RenderWindow& renderWindow)
 {
-	madeBy_.setPosition(Vector2f(220, 510));
+	madeBy_.setPosition(Vector2f(1920 / 2, 1080 / 2));
 	renderWindow.draw(madeBy_);
 }
 
 void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
 {
-	dactyloChute_.setPosition(Vector2f(220, 510));
+	dactyloChute_.setPosition(Vector2f(1920 / 2, 1080 / 2));
 	renderWindow.draw(dactyloChute_);
 	dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.01, dactyloChute_.getScale().y - 0.01));
 }

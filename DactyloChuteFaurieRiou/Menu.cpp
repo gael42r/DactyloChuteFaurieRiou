@@ -165,13 +165,13 @@ void Menu::goToScoreboard() const
 
 void Menu::save() const
 {
-	ofstream os("data.txt");
+	ofstream os(".\\Resources\\Data\\data.txt");
 	scoreboard_.save(os);
 	os.close();
 }
 void Menu::load()
 {
-	ifstream is("data.txt");
+	ifstream is(".\\Resources\\Data\\data.txt");
 	scoreboard_.load(is);
 	is.close();
 }

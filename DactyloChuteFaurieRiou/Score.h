@@ -24,7 +24,6 @@ public:
 	void setPlayer(string str) { player_ = str; }
 	void display() const;
 	void up(int);
-
 	void save(ofstream& ofs) const;
 	void load(ifstream& ifs);
 };

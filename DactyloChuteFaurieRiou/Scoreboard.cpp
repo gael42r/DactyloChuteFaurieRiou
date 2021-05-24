@@ -50,7 +50,6 @@ void Scoreboard::load(ifstream& ifs)
 	scoreboard_.clear();
 	size_t nb;
 	ifs >> nb;
-	//ifs.ignore();
 	for (int i = 0; i < (int)nb; i++)
 	{
 		Score* score = new Score;

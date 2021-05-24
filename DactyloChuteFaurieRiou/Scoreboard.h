@@ -19,7 +19,6 @@ public:
 
 	void display() const;
 	void addScore(Score*);
-
 	void save(ofstream& ofs) const;
 	void load(ifstream& ifs);
 };

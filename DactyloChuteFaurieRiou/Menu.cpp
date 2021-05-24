@@ -151,7 +151,7 @@ void Menu::display() const
 	cout << "- 1 : Play" << endl;
 	cout << "- 2 : Settings" << endl;
 	cout << "- 3 : Scores" << endl;
-	cout << "- 4 : Exit" << endl;
+	cout << "- 4 : Exit and save" << endl;
 	cout << "--------------------------------------------------------------------------------------" << endl;
 }
 

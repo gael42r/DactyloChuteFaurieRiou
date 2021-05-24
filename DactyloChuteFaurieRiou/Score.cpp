@@ -38,7 +38,6 @@ void Score::up(int nbChar)
 	numberOfChar_ = numberOfChar_ + nbChar;
 }
 
-
 void Score::save(ofstream& ofs) const
 {
 	ofs << player_ << endl;
@@ -55,6 +54,5 @@ void Score::load(ifstream& ifs)
 	ifs >> charPerSec_;
 	ifs >> difficulty_;
 	ifs.ignore();
-	getline(ifs, date_);
-	
+	getline(ifs, date_);	
 }

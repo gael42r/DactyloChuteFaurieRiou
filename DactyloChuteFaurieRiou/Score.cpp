@@ -7,7 +7,7 @@ Score::Score(string difficulty, string player, int numberOfChar)
 	difficulty_ = difficulty;
 	charPerSec_ = numberOfChar / 60.f;
 
-	//Current date
+	//Calcul de la date
 	time_t date = time(NULL);
 	tm* d;
 	char date_string[100];

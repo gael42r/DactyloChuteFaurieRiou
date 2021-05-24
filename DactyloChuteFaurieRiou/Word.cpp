@@ -12,11 +12,6 @@ Word::Word(string content)
 	isTextUpdated_ = false;
 }
 
-//string alreadyEntered = content_.substr(0, currentCaracter_);
-//string currentCharacter = content_.substr(currentCaracter_);
-//string stillToBeEntered = content_.substr(currentCaracter_, content_.size());
-//text_ << sf::Color::Green << alreadyEntered << sf::Color::Yellow << currentCharacter << sf::Color::Red << stillToBeEntered;
-
 void Word::drawCurrent(sf::RenderWindow& renderWindow)
 {
 	sf::Font font;
@@ -43,7 +38,6 @@ void Word::drawCurrent(sf::RenderWindow& renderWindow)
 	text_.setPosition(pos_);	
 	pos_.y = pos_.y + 3;
 	renderWindow.draw(text_);
-
 }
 
 void Word::draw(sf::RenderWindow& renderWindow)

@@ -6,6 +6,7 @@ Dictionary::Dictionary(int difficulty)
 	ifstream flux2(".\\Resources\\Words\\words2.txt");
 	ifstream flux3(".\\Resources\\Words\\words3.txt");
 
+	//Chargement des mots suivant la difficulté des paramètres
 	switch (difficulty)
 	{
 	case 1:
@@ -45,9 +46,6 @@ Dictionary::Dictionary(int difficulty)
 		flux1.close();
 		break;
 	}
-
-	
-
 	numberCharLastWord_ = 0;
 }
 
@@ -63,15 +61,8 @@ void Dictionary::drawWords(sf::RenderWindow& renderWindow)
 		{
 			(*it)->draw(renderWindow);
 		}
-		
 	}
 }
-
-//void Dictionary::addNewWordToList()
-//{
-//	onScreenWords_.push_back((*it_));
-//	it_++;
-//}
 
 void Dictionary::addNewWordToList()
 {

@@ -1,8 +1,6 @@
 #include "Scoreboard.h"
 
-Scoreboard::Scoreboard()
-{
-}
+Scoreboard::Scoreboard(){}
 
 Scoreboard::~Scoreboard()
 {
@@ -29,8 +27,6 @@ void Scoreboard::addScore(Score* score)
 {
 	scoreboard_.push_back(score);
 }
-
-
 
 void Scoreboard::save(ofstream& ofs) const
 {

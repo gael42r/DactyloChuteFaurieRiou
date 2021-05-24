@@ -22,54 +22,20 @@ Game::Game(Settings settings)
 	isEnterPressed_ = false;
 }
 
-void Game::drawDictionary(sf::RenderWindow& renderWindow)
+void Game::drawMadeBy(sf::RenderWindow& renderWindow)
 {
-	dictionary_.drawWords(renderWindow);
-	if (getClockTime() > frequency_)
+	madeBy_.setPosition(1920 / 2, 1080 / 2);
+	renderWindow.draw(madeBy_);
+}
+
+void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
+{
+	dactyloChute_.setPosition(1920 / 2, 1080 / 2);
+	renderWindow.draw(dactyloChute_);
+	if (dactyloChute_.getScale().x > 0 && dactyloChute_.getScale().y > 0)
 	{
-		dictionary_.addNewWordToList();
-		restartClock();
+		dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.00475, dactyloChute_.getScale().y - 0.00475));
 	}
-}
-
-void Game::restartClock()
-{
-	clock_.restart();
-}
-
-sf::Time Game::getClockTime()
-{
-	return clock_.getElapsedTime();
-}
-
-sf::Time Game::chooseFrequency(int speed)
-{
-	switch (speed)
-	{
-	case 1:
-		return sf::seconds(3);
-		break;
-	case 2:
-		return sf::seconds(2);
-		break;
-	case 3:
-		return sf::seconds(1);
-		break;
-	default:
-		return sf::seconds(3);
-		break;
-	}
-}
-
-void Game::restartTimer()
-{
-	timer_.restart();
-}
-
-sf::Time Game::remainingTime()
-{
-	sf::Time time = timer_.getElapsedTime();
-	return sf::seconds(60) - time;
 }
 
 void Game::drawTimer(sf::RenderWindow& renderWindow)
@@ -83,11 +49,6 @@ void Game::drawTimer(sf::RenderWindow& renderWindow)
 	timer.setPosition(sf::Vector2f(15, 10));
 	timer.setCharacterSize(35);
 	renderWindow.draw(timer);
-}
-
-void Game::upScore()
-{
-	score_.up(dictionary_.getNumberCharLastWord());
 }
 
 void Game::drawScore(sf::RenderWindow& renderWindow)
@@ -116,40 +77,82 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 	renderWindow.draw(difficulty);
 }
 
-void Game::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event& event)
+void Game::drawDictionary(sf::RenderWindow& renderWindow)
 {
-	if (event.type == sf::Event::TextEntered)
+	dictionary_.drawWords(renderWindow);
+	if (getClockTime() > frequency_)
 	{
-		if (dictionary_.eventTextEntered(renderWindow, event))
-		{
-			upScore();
-		}
+		dictionary_.addNewWordToList();
+		restartClock();
 	}
 }
 
-void Game::eventClose(sf::RenderWindow& renderWindow, sf::Event& event)
+void Game::drawEndScore(sf::RenderWindow& renderWindow)
 {
-	if (event.type == sf::Event::Closed)
-	{
-		renderWindow.close();
-	}
+	sfe::RichText endScore;
+	sfe::RichText score;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
+
+	endScore.setFont(font);
+	endScore.clear();
+	endScore << sf::Color::Yellow << "score";
+	endScore.setCharacterSize(90);
+	endScore.setOrigin(endScore.getLocalBounds().left + endScore.getLocalBounds().width / 2.0f, endScore.getLocalBounds().top + endScore.getLocalBounds().height / 2.0f);
+	endScore.setPosition(sf::Vector2f(1920 / 2.0f, 300));
+
+	score.setFont(font);
+	score.clear();
+	score << sf::Color::Cyan << to_string(score_.getNumberOfChar());
+	score.setCharacterSize(90);
+	score.setOrigin(score.getLocalBounds().left + score.getLocalBounds().width / 2.0f, score.getLocalBounds().top + score.getLocalBounds().height / 2.0f);
+	score.setPosition(sf::Vector2f(1920 / 2.0f, 400));
+
+	renderWindow.draw(endScore);
+	renderWindow.draw(score);
 }
 
-
-void Game::deleteOutWords()
+void Game::drawName(sf::RenderWindow& renderWindow)
 {
-	dictionary_.deleteOutOfScreenWords();
+	sfe::RichText name;
+	sfe::RichText nameEntered;
+	sf::Font font;
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
+
+	name.setFont(font);
+	name.clear();
+	name << sf::Color::Yellow << "name";
+	name.setCharacterSize(90);
+	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
+	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
+
+	nameEntered.setFont(font);
+	nameEntered.clear();
+	nameEntered << sf::Color::Magenta << nameEntered_;
+	nameEntered.setCharacterSize(90);
+	nameEntered.setOrigin(nameEntered.getLocalBounds().left + nameEntered.getLocalBounds().width / 2.0f, nameEntered.getLocalBounds().top + nameEntered.getLocalBounds().height / 2.0f);
+	nameEntered.setPosition(sf::Vector2f(1920 / 2.0f, 700));
+
+	renderWindow.draw(name);
+	renderWindow.draw(nameEntered);
 }
 
-bool Game::isTimeIsUp()
+void Game::drawPressEnter(sf::RenderWindow& renderWindow)
 {
-	if (remainingTime() < sf::Time::Zero)
+	if (!nameEntered_.empty())
 	{
-		return true;
-	}
-	else
-	{
-		return false;
+		sfe::RichText pressEnter;
+		sf::Font font;
+		font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
+
+		pressEnter.setFont(font);
+		pressEnter.clear();
+		pressEnter << sf::Color::White << "Press ENTER to continue...";
+		pressEnter.setCharacterSize(40);
+		pressEnter.setOrigin(pressEnter.getLocalBounds().left + pressEnter.getLocalBounds().width / 2.0f, pressEnter.getLocalBounds().top + pressEnter.getLocalBounds().height / 2.0f);
+		pressEnter.setPosition(sf::Vector2f(1920 / 2.0f, 900));
+
+		renderWindow.draw(pressEnter);
 	}
 }
 
@@ -204,93 +207,41 @@ bool Game::isPreGameTimeIsUp()
 	}
 }
 
-void Game::drawMadeBy(sf::RenderWindow& renderWindow)
+void Game::restartTimer()
 {
-	madeBy_.setPosition(1920 / 2, 1080 / 2);
-	renderWindow.draw(madeBy_);
+	timer_.restart();
 }
 
-void Game::drawDactyloChute(sf::RenderWindow& renderWindow)
+bool Game::isTimeIsUp()
 {
-	dactyloChute_.setPosition(1920 / 2, 1080 / 2);
-	renderWindow.draw(dactyloChute_);
-	if (dactyloChute_.getScale().x > 0 && dactyloChute_.getScale().y > 0)
+	if (remainingTime() < sf::Time::Zero)
 	{
-		dactyloChute_.setScale(sf::Vector2f(dactyloChute_.getScale().x - 0.00475, dactyloChute_.getScale().y - 0.00475));
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-void Game::playMusic()
+void Game::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event& event)
 {
-	music_.play();
+	if (event.type == sf::Event::TextEntered)
+	{
+		if (dictionary_.eventTextEntered(renderWindow, event))
+		{
+			upScore();
+		}
+	}
 }
 
-void Game::drawEndScore(sf::RenderWindow& renderWindow)
+void Game::eventClose(sf::RenderWindow& renderWindow, sf::Event& event)
 {
-	sfe::RichText endScore;
-	sfe::RichText score;
-	sf::Font font;
-	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
-
-	endScore.setFont(font);
-	endScore.clear();
-	endScore << sf::Color::Yellow << "score";
-	endScore.setCharacterSize(90);
-	endScore.setOrigin(endScore.getLocalBounds().left + endScore.getLocalBounds().width / 2.0f, endScore.getLocalBounds().top + endScore.getLocalBounds().height / 2.0f);
-	endScore.setPosition(sf::Vector2f(1920 / 2.0f, 300));
-
-	score.setFont(font);
-	score.clear();
-	score << sf::Color::Cyan << to_string(score_.getNumberOfChar());
-	score.setCharacterSize(90);
-	score.setOrigin(score.getLocalBounds().left + score.getLocalBounds().width / 2.0f, score.getLocalBounds().top + score.getLocalBounds().height / 2.0f);
-	score.setPosition(sf::Vector2f(1920 / 2.0f, 400));
-
-	renderWindow.draw(endScore);
-	renderWindow.draw(score);
+	if (event.type == sf::Event::Closed)
+	{
+		renderWindow.close();
+	}
 }
-
-//void Game::drawName(sf::RenderWindow& renderWindow)
-//{
-//	sfe::RichText name;
-//	sf::Font font;
-//	font.loadFromFile(".\\Resources\\Starjedi.ttf");
-//
-//	name.setFont(font);
-//	name.clear();
-//	name << sf::Color::Yellow << "name";
-//	name.setCharacterSize(90);
-//	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
-//	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
-//
-//	renderWindow.draw(name);
-//}
-
-void Game::drawName(sf::RenderWindow& renderWindow)
-{
-	sfe::RichText name;
-	sfe::RichText nameEntered;
-	sf::Font font;
-	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
-
-	name.setFont(font);
-	name.clear();
-	name << sf::Color::Yellow << "name";
-	name.setCharacterSize(90);
-	name.setOrigin(name.getLocalBounds().left + name.getLocalBounds().width / 2.0f, name.getLocalBounds().top + name.getLocalBounds().height / 2.0f);
-	name.setPosition(sf::Vector2f(1920 / 2.0f, 600));
-
-	nameEntered.setFont(font);
-	nameEntered.clear();
-	nameEntered << sf::Color::Magenta << nameEntered_;
-	nameEntered.setCharacterSize(90);
-	nameEntered.setOrigin(nameEntered.getLocalBounds().left + nameEntered.getLocalBounds().width / 2.0f, nameEntered.getLocalBounds().top + nameEntered.getLocalBounds().height / 2.0f);
-	nameEntered.setPosition(sf::Vector2f(1920 / 2.0f, 700));
-
-	renderWindow.draw(name);
-	renderWindow.draw(nameEntered);
-}
-
 
 void Game::eventTextName(sf::Event& event)
 {
@@ -303,29 +254,10 @@ void Game::eventTextName(sf::Event& event)
 				nameEntered_.pop_back();
 			}
 		}
-		else if(event.text.unicode >= 97 && event.text.unicode <= 122)
+		else if (event.text.unicode >= 97 && event.text.unicode <= 122)
 		{
 			nameEntered_.push_back(event.text.unicode);
 		}
-	}
-}
-
-void Game::drawPressEnter(sf::RenderWindow& renderWindow)
-{
-	if (!nameEntered_.empty())
-	{
-		sfe::RichText pressEnter;
-		sf::Font font;
-		font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
-
-		pressEnter.setFont(font);
-		pressEnter.clear();
-		pressEnter << sf::Color::White << "Press ENTER to continue...";
-		pressEnter.setCharacterSize(40);
-		pressEnter.setOrigin(pressEnter.getLocalBounds().left + pressEnter.getLocalBounds().width / 2.0f, pressEnter.getLocalBounds().top + pressEnter.getLocalBounds().height / 2.0f);
-		pressEnter.setPosition(sf::Vector2f(1920 / 2.0f, 900));
-
-		renderWindow.draw(pressEnter);
 	}
 }
 
@@ -345,6 +277,21 @@ void Game::eventEnter(sf::Event& event, sf::RenderWindow& renderWindow)
 	}
 }
 
+void Game::upScore()
+{
+	score_.up(dictionary_.getNumberCharLastWord());
+}
+
+void Game::deleteOutWords()
+{
+	dictionary_.deleteOutOfScreenWords();
+}
+
+void Game::playMusic()
+{
+	music_.play();
+}
+
 bool Game::isEnterAlreadyPressed()
 {
 	if (isEnterPressed_)
@@ -355,4 +302,40 @@ bool Game::isEnterAlreadyPressed()
 	{
 		false;
 	}
+}
+
+
+void Game::restartClock()
+{
+	clock_.restart();
+}
+
+sf::Time Game::getClockTime()
+{
+	return clock_.getElapsedTime();
+}
+
+sf::Time Game::chooseFrequency(int speed)
+{
+	switch (speed)
+	{
+	case 1:
+		return sf::seconds(3);
+		break;
+	case 2:
+		return sf::seconds(2);
+		break;
+	case 3:
+		return sf::seconds(1);
+		break;
+	default:
+		return sf::seconds(3);
+		break;
+	}
+}
+
+sf::Time Game::remainingTime()
+{
+	sf::Time time = timer_.getElapsedTime();
+	return sf::seconds(60) - time;
 }

@@ -1,12 +1,6 @@
-#include<iostream>
-
 #include "Menu.h"
 
-using namespace std;
-
-Menu::Menu()
-{
-}
+Menu::Menu(){}
 
 void Menu::title() const
 {
@@ -20,6 +14,16 @@ void Menu::title() const
 	cout << "                                     #####" << endl;
 	system("PAUSE");
 	system("CLS");
+}
+
+void Menu::display() const
+{
+	cout << "---------------------------------------* MENU *---------------------------------------" << endl;
+	cout << "- 1 : Play" << endl;
+	cout << "- 2 : Settings" << endl;
+	cout << "- 3 : Scores" << endl;
+	cout << "- 4 : Exit and save" << endl;
+	cout << "--------------------------------------------------------------------------------------" << endl;
 }
 
 int Menu::enterChoice() const
@@ -37,32 +41,35 @@ void Menu::editScoreboard(Score* score)
 
 void Menu::play()
 {
+	//Chargement de la texture du fond
 	sf::Texture texture;
 	texture.loadFromFile(".\\Resources\\Pictures\\background.png");
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
 
-	sf::Vector2u sz = texture.getSize();
+	//Création de la fenêtre
 	sf::RenderWindow renderWindow;
+	sf::Vector2u sz = texture.getSize();
 	
 	renderWindow.create(sf::VideoMode(sz.x, sz.y), "image", sf::Style::Fullscreen);
-	
 	renderWindow.setFramerateLimit(40);
 
+	//Création d'une partie
 	Game game(settings_);
 
+	//Démarrage de la partie
 	game.restartMadeByTimer();
 
 	sf::Event event;
-
-
 	while (renderWindow.isOpen())
 	{
 		while (renderWindow.pollEvent(event))
 		{
 			game.eventClose(renderWindow, event);
 		}
+
+		//Affichage "made by"
 		while (!game.isMadeByTimeIsUp())
 		{
 			while (renderWindow.pollEvent(event))
@@ -75,6 +82,7 @@ void Menu::play()
 			renderWindow.display();
 		}
 
+		//Affichage titre "DactyloChute"
 		game.restartDactyloChuteTimer();
 		game.playMusic();
 		while (!game.isDactyloChuteTimeIsUp())
@@ -100,6 +108,7 @@ void Menu::play()
 			renderWindow.display();
 		}
 
+		//Affichage de la partie
 		game.restartTimer();
 		while (!game.isTimeIsUp())
 		{
@@ -118,6 +127,8 @@ void Menu::play()
 			game.drawSettings(renderWindow);
 			renderWindow.display();
 		}
+
+		//Affichage de la fin de partie
 		while (game.isTimeIsUp() && !game.isEnterAlreadyPressed())
 		{
 			while (renderWindow.pollEvent(event))
@@ -135,6 +146,7 @@ void Menu::play()
 		}
 	}
 
+	//Aajout du score dans le tableau des scores
 	editScoreboard(new Score(game.getScore()));
 }
 
@@ -143,16 +155,6 @@ void Menu::setUp()
 	system("CLS");
 	settings_.display();
 	while (settings_.edit());
-}
-
-void Menu::display() const
-{
-	cout << "---------------------------------------* MENU *---------------------------------------" << endl;
-	cout << "- 1 : Play" << endl;
-	cout << "- 2 : Settings" << endl;
-	cout << "- 3 : Scores" << endl;
-	cout << "- 4 : Exit and save" << endl;
-	cout << "--------------------------------------------------------------------------------------" << endl;
 }
 
 void Menu::goToScoreboard() const
@@ -169,6 +171,7 @@ void Menu::save() const
 	scoreboard_.save(os);
 	os.close();
 }
+
 void Menu::load()
 {
 	ifstream is(".\\Resources\\Data\\data.txt");

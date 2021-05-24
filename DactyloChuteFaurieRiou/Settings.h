@@ -7,10 +7,12 @@ using namespace std;
 
 class Settings
 {
-private:
+	//Difficulté
 	int difficulty_;
 	string strDifficulty_;
+	//Vitesse
 	int speed_;
+	//Difficulté des mots
 	int wordsDifficulty_;
 
 public:
@@ -19,6 +21,8 @@ public:
 	string getStrDifficulty() const { return strDifficulty_; }
 	int getDifficulty() const { return difficulty_; }
 
+	//Afficher les paramètres
 	void display() const;
+	//Modifier les paramètres
 	bool edit();
 };

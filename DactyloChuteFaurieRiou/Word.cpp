@@ -7,7 +7,7 @@ Word::Word(string content)
 	pos_.x = rand() % 1400 + 260;
 	pos_.y = 0;
 
-	currentCaracter_ = 0;
+	currentCharacter_ = 0;
 	isTextAlreadyAssigned_ = false;
 	isTextUpdated_ = false;
 }
@@ -18,9 +18,9 @@ void Word::drawCurrent(sf::RenderWindow& renderWindow)
 	font.loadFromFile(".\\Resources\\Fonts\\arial.ttf");
 	text_.setFont(font);
 	text_.setCharacterSize(30);
-	string alreadyEntered = content_.substr(0, currentCaracter_);
-	string currentCharacter = content_.substr(currentCaracter_, 1);
-	string stillToBeEntered = content_.substr(currentCaracter_ + 1, content_.size());
+	string alreadyEntered = content_.substr(0, currentCharacter_);
+	string currentCharacter = content_.substr(currentCharacter_, 1);
+	string stillToBeEntered = content_.substr(currentCharacter_ + 1, content_.size());
 	if (!isTextAlreadyAssigned_)
 	{
 		text_ << sf::Color::White << alreadyEntered << sf::Color::Cyan << currentCharacter << sf::Color::Yellow << stillToBeEntered;
@@ -58,11 +58,11 @@ void Word::draw(sf::RenderWindow& renderWindow)
 
 bool Word::eventTextEntered(sf::RenderWindow& renderWindow, sf::Event event)
 {
-	if (event.text.unicode == sf::String(content_[currentCaracter_]))
+	if (event.text.unicode == sf::String(content_[currentCharacter_]))
 	{
-		if (currentCaracter_ < content_.size() - 1)
+		if (currentCharacter_ < content_.size() - 1)
 		{
-			currentCaracter_++;
+			currentCharacter_++;
 			isTextUpdated_ = true;
 			return false;
 		}

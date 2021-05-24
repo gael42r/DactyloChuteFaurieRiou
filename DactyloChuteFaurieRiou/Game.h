@@ -1,3 +1,4 @@
+//Auteur : Gaël RIOU et Antoine FAURIE
 #pragma once
 
 #include <SFML/Graphics.hpp>

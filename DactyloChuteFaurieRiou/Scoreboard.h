@@ -1,3 +1,4 @@
+//Auteur : Antoine FAURIE
 #pragma once
 
 #include <iostream>

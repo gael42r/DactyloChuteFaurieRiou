@@ -1,3 +1,4 @@
+//Auteur : Gaël RIOU
 #pragma once
 
 #include<SFML/Graphics.hpp>
@@ -18,8 +19,7 @@ class Word
 	//Position du mot
 	sf::Vector2f pos_;
 	//Caractère courant du mot
-	int currentCaracter_;
-
+	int currentCharacter_;
 
 	bool isTextAlreadyAssigned_;
 	bool isTextUpdated_;

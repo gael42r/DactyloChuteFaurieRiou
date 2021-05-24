@@ -1,3 +1,4 @@
+//Auteur : Gaël RIOU
 #pragma once
 
 #include <iostream>

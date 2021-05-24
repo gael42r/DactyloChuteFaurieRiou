@@ -1,17 +1,52 @@
 #include "Dictionary.h"
 
-Dictionary::Dictionary()
+Dictionary::Dictionary(int difficulty)
 {
-	ifstream flux(".\\Resources\\words.txt");
+	ifstream flux1(".\\Resources\\Words\\words1.txt");
+	ifstream flux2(".\\Resources\\Words\\words2.txt");
+	ifstream flux3(".\\Resources\\Words\\words3.txt");
 
-	while (!flux.eof())
+	switch (difficulty)
 	{
-		string str;
-		getline(flux, str);
-		word_.push_back(new Word(str));	
+	case 1:
+		while (!flux1.eof())
+		{
+			string str;
+			getline(flux1, str);
+			word_.push_back(new Word(str));
+		}
+		flux1.close();
+		break;
+	case 2:
+		while (!flux2.eof())
+		{
+			string str;
+			getline(flux2, str);
+			word_.push_back(new Word(str));
+		}
+		flux2.close();
+		break;
+	case 3:
+		while (!flux3.eof())
+		{
+			string str;
+			getline(flux3, str);
+			word_.push_back(new Word(str));
+		}
+		flux3.close();
+		break;
+	default:
+		while (!flux1.eof())
+		{
+			string str;
+			getline(flux1, str);
+			word_.push_back(new Word(str));
+		}
+		flux1.close();
+		break;
 	}
-	flux.close();
-	//it_ = word_.begin();
+
+	
 
 	numberCharLastWord_ = 0;
 }

@@ -20,7 +20,7 @@ Word::Word(string content)
 void Word::drawCurrent(sf::RenderWindow& renderWindow)
 {
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\arial.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\arial.ttf");
 	text_.setFont(font);
 	text_.setCharacterSize(30);
 	string alreadyEntered = content_.substr(0, currentCaracter_);
@@ -49,7 +49,7 @@ void Word::drawCurrent(sf::RenderWindow& renderWindow)
 void Word::draw(sf::RenderWindow& renderWindow)
 {
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\arial.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\arial.ttf");
 	text_.setFont(font);
 	text_.setCharacterSize(30);
 	text_.clear();

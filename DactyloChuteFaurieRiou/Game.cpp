@@ -3,19 +3,19 @@
 Game::Game(Settings settings)
 {
 	settings_ = settings;
-	dictionary_ = Dictionary();
+	dictionary_ = Dictionary(settings_.getDifficulty());
 	score_ = Score(settings_.getStrDifficulty());
 	frequency_ = chooseFrequency(settings_.getDifficulty());
 
-	madeByTexture_.loadFromFile(".\\Resources\\MadeBy.png");
+	madeByTexture_.loadFromFile(".\\Resources\\Pictures\\MadeBy.png");
 	madeBy_.setTexture(madeByTexture_);
 	madeBy_.setOrigin(madeByTexture_.getSize().x / 2, madeByTexture_.getSize().y / 2);
 
-	dactyloChuteTexture_.loadFromFile(".\\Resources\\DactyloChute.png");
+	dactyloChuteTexture_.loadFromFile(".\\Resources\\Pictures\\DactyloChute.png");
 	dactyloChute_.setTexture(dactyloChuteTexture_);
 	dactyloChute_.setOrigin(dactyloChuteTexture_.getSize().x / 2, dactyloChuteTexture_.getSize().y / 2);
 
-	music_.openFromFile(".\\Resources\\theme.ogg");
+	music_.openFromFile(".\\Resources\\Musics\\theme.ogg");
 
 	nameEntered_ = "";
 
@@ -69,14 +69,14 @@ void Game::restartTimer()
 sf::Time Game::remainingTime()
 {
 	sf::Time time = timer_.getElapsedTime();
-	return sf::seconds(10) - time;
+	return sf::seconds(60) - time;
 }
 
 void Game::drawTimer(sf::RenderWindow& renderWindow)
 {
 	sfe::RichText timer;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 	timer.setFont(font);
 	timer.clear();
 	timer << sf::Color::White << "remaining time : " << sf::Color::Yellow << to_string((remainingTime().asMilliseconds()) / 1000);
@@ -94,7 +94,7 @@ void Game::drawScore(sf::RenderWindow& renderWindow)
 {
 	sfe::RichText score;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 	score.setFont(font);
 	score.clear();
 	score << sf::Color::White << "score : " << sf::Color::Cyan << to_string(score_.getNumberOfChar());
@@ -107,7 +107,7 @@ void Game::drawSettings(sf::RenderWindow& renderWindow)
 {
 	sfe::RichText difficulty;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 	difficulty.setFont(font);
 	difficulty.clear();
 	difficulty << sf::Color::White << "difficulty : " << sf::Color::Magenta << settings_.getStrDifficulty();
@@ -230,7 +230,7 @@ void Game::drawEndScore(sf::RenderWindow& renderWindow)
 	sfe::RichText endScore;
 	sfe::RichText score;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 
 	endScore.setFont(font);
 	endScore.clear();
@@ -271,7 +271,7 @@ void Game::drawName(sf::RenderWindow& renderWindow)
 	sfe::RichText name;
 	sfe::RichText nameEntered;
 	sf::Font font;
-	font.loadFromFile(".\\Resources\\Starjedi.ttf");
+	font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 
 	name.setFont(font);
 	name.clear();
@@ -316,7 +316,7 @@ void Game::drawPressEnter(sf::RenderWindow& renderWindow)
 	{
 		sfe::RichText pressEnter;
 		sf::Font font;
-		font.loadFromFile(".\\Resources\\Starjedi.ttf");
+		font.loadFromFile(".\\Resources\\Fonts\\Starjedi.ttf");
 
 		pressEnter.setFont(font);
 		pressEnter.clear();

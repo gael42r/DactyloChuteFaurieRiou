@@ -15,7 +15,7 @@ private:
 	int numberCharLastWord_;
 
 public:
-	Dictionary();
+	Dictionary(int = 1);
 
 	void drawWords(sf::RenderWindow&);
 	void addNewWordToList();

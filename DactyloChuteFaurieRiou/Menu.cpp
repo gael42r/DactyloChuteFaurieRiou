@@ -38,7 +38,7 @@ void Menu::editScoreboard(Score* score)
 void Menu::play()
 {
 	sf::Texture texture;
-	texture.loadFromFile(".\\Resources\\background.png");
+	texture.loadFromFile(".\\Resources\\Pictures\\background.png");
 
 	sf::Sprite sprite;
 	sprite.setTexture(texture);

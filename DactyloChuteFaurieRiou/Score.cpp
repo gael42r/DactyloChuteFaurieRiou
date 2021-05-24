@@ -37,3 +37,24 @@ void Score::up(int nbChar)
 {
 	numberOfChar_ = numberOfChar_ + nbChar;
 }
+
+
+void Score::save(ofstream& ofs) const
+{
+	ofs << player_ << endl;
+	ofs << numberOfChar_ << endl;
+	ofs << charPerSec_ << endl;
+	ofs << difficulty_ << endl;
+	ofs << date_ << endl;
+}
+
+void Score::load(ifstream& ifs)
+{
+	ifs >> player_;
+	ifs >> numberOfChar_;
+	ifs >> charPerSec_;
+	ifs >> difficulty_;
+	ifs.ignore();
+	getline(ifs, date_);
+	
+}

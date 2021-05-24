@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>  
 #include <list>
+#include<fstream>
 
 #include "Score.h"
 
@@ -18,4 +19,7 @@ public:
 
 	void display() const;
 	void addScore(Score*);
+
+	void save(ofstream& ofs) const;
+	void load(ifstream& ifs);
 };

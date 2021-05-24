@@ -1,9 +1,10 @@
 #pragma once
 
 #include<iostream>
-#include <iomanip>  
-#include <ctime>
-#include <string>
+#include<iomanip>  
+#include<ctime>
+#include<string>
+#include<fstream>
 
 using namespace std;
 
@@ -23,4 +24,7 @@ public:
 	void setPlayer(string str) { player_ = str; }
 	void display() const;
 	void up(int);
+
+	void save(ofstream& ofs) const;
+	void load(ifstream& ifs);
 };

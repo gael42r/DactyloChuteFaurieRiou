@@ -162,3 +162,16 @@ void Menu::goToScoreboard() const
 	cout << "> ";
 	system("PAUSE");
 }
+
+void Menu::save() const
+{
+	ofstream os("data.txt");
+	scoreboard_.save(os);
+	os.close();
+}
+void Menu::load()
+{
+	ifstream is("data.txt");
+	scoreboard_.load(is);
+	is.close();
+}

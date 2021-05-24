@@ -1,10 +1,11 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include<SFML/Graphics.hpp>
+#include<fstream>
 
-#include "Settings.h"
-#include "Scoreboard.h"
-#include "Score.h"
-#include "Game.h"
+#include"Settings.h"
+#include"Scoreboard.h"
+#include"Score.h"
+#include"Game.h"
 
 class Menu
 {
@@ -25,4 +26,7 @@ public:
 	void play();
 	void setUp();
 	void goToScoreboard() const;
+
+	void save() const;
+	void load();
 };

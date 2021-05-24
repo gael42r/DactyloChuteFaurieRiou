@@ -4,6 +4,7 @@
 int main()
 {
 	Menu menu;
+	menu.load();
 	menu.title();
 
 	for (;;)
@@ -30,6 +31,7 @@ int main()
 			menu.goToScoreboard();
 			break;
 		case 4: //Exit
+			menu.save();
 			return 0;
 			break;
 		default:
